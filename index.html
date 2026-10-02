@@ -1581,4 +1581,1182 @@
        PART 3 WILL BE PASTED DIRECTLY BELOW THIS LINE.
        DO NOT ADD </body> OR </html> HERE.
        ========================================================= -->
+    <!-- =========================================================
+     SERVICEGO — PART 3
+     AUTHENTICATION / CUSTOMER + SERVICE PROVIDER
+     Paste directly below PART 2
+     ========================================================= -->
+
+<style>
+/* ---------- AUTH AREA ---------- */
+
+#sg-auth-screen{
+  display:none;
+  min-height:100vh;
+  width:100%;
+  box-sizing:border-box;
+  padding:28px 18px 40px;
+  background:
+    radial-gradient(circle at 10% 5%,rgba(30,145,105,.10),transparent 30%),
+    radial-gradient(circle at 90% 20%,rgba(20,55,85,.08),transparent 32%),
+    linear-gradient(145deg,#fbfdfc 0%,#f3f8f6 100%);
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+#sg-auth-screen.sg-show{
+  display:block;
+}
+
+.sg-auth-wrap{
+  width:100%;
+  max-width:520px;
+  margin:0 auto;
+}
+
+/* ---------- LOGO ---------- */
+
+.sg-auth-brand{
+  text-align:center;
+  margin:8px 0 28px;
+}
+
+.sg-logo-premium{
+  width:76px;
+  height:76px;
+  margin:0 auto 15px;
+  border-radius:24px;
+  background:linear-gradient(145deg,#22a979,#087652);
+  box-shadow:
+    0 15px 30px rgba(12,112,78,.20),
+    inset 0 1px 2px rgba(255,255,255,.42);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.sg-logo-premium svg{
+  width:54px;
+  height:54px;
+  overflow:visible;
+}
+
+.sg-logo-premium path{
+  fill:none;
+  stroke:#fff;
+  stroke-width:4.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.sg-auth-brand h2{
+  margin:0;
+  color:#102d47;
+  font-size:30px;
+  font-weight:800;
+  letter-spacing:-1.2px;
+}
+
+.sg-auth-brand p{
+  margin:7px 0 0;
+  color:#71808a;
+  font-size:14px;
+}
+
+/* ---------- BACK ---------- */
+
+.sg-auth-back{
+  border:0;
+  background:transparent;
+  color:#58717b;
+  font-size:15px;
+  font-weight:700;
+  padding:5px 0;
+  margin-bottom:18px;
+  cursor:pointer;
+}
+
+/* ---------- CARD ---------- */
+
+.sg-auth-card{
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(19,76,64,.12);
+  border-radius:28px;
+  padding:25px 21px 23px;
+  box-shadow:
+    0 18px 45px rgba(16,55,72,.09),
+    0 2px 8px rgba(16,55,72,.04);
+}
+
+.sg-auth-card h3{
+  margin:0;
+  color:#123149;
+  font-size:23px;
+  font-weight:800;
+  letter-spacing:-.4px;
+}
+
+.sg-auth-card .sg-subtitle{
+  margin:8px 0 23px;
+  color:#75838c;
+  font-size:14px;
+  line-height:1.55;
+}
+
+/* ---------- ROLE BADGE ---------- */
+
+.sg-role-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#edf8f4;
+  color:#087653;
+  font-size:12px;
+  font-weight:800;
+  margin-bottom:17px;
+}
+
+.sg-role-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#0a9367;
+}
+
+/* ---------- INPUT ---------- */
+
+.sg-field{
+  margin-bottom:16px;
+}
+
+.sg-field label{
+  display:block;
+  margin-bottom:8px;
+  color:#314b5c;
+  font-size:13px;
+  font-weight:800;
+}
+
+.sg-input{
+  width:100%;
+  height:52px;
+  box-sizing:border-box;
+  border:1px solid #d8e3df;
+  border-radius:15px;
+  background:#fbfdfc;
+  padding:0 15px;
+  outline:none;
+  color:#18364b;
+  font-size:15px;
+  transition:.2s ease;
+}
+
+.sg-input:focus{
+  border-color:#15936a;
+  box-shadow:0 0 0 4px rgba(21,147,106,.09);
+  background:#fff;
+}
+
+.sg-phone-row{
+  display:flex;
+  gap:9px;
+}
+
+.sg-country-code{
+  width:72px;
+  flex:0 0 72px;
+  height:52px;
+  border:1px solid #d8e3df;
+  border-radius:15px;
+  background:#f7faf9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#244458;
+  font-weight:800;
+  font-size:14px;
+}
+
+/* ---------- BUTTON ---------- */
+
+.sg-primary-btn{
+  width:100%;
+  min-height:53px;
+  border:0;
+  border-radius:16px;
+  background:linear-gradient(135deg,#15966b,#087452);
+  color:#fff;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:.1px;
+  cursor:pointer;
+  box-shadow:0 11px 22px rgba(8,116,82,.18);
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+
+.sg-primary-btn:active{
+  transform:scale(.98);
+}
+
+.sg-primary-btn:disabled{
+  opacity:.55;
+  box-shadow:none;
+  cursor:not-allowed;
+}
+
+/* ---------- NOTE ---------- */
+
+.sg-secure-note{
+  margin-top:17px;
+  padding:12px 13px;
+  border-radius:14px;
+  background:#f4f9f7;
+  color:#6d7d84;
+  font-size:12px;
+  line-height:1.5;
+}
+
+.sg-secure-note strong{
+  color:#197d60;
+}
+
+/* ---------- OTP ---------- */
+
+.sg-otp-screen{
+  display:none;
+}
+
+.sg-otp-screen.sg-active{
+  display:block;
+}
+
+.sg-otp-boxes{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+  margin:20px 0;
+}
+
+.sg-otp-box{
+  width:43px;
+  height:50px;
+  border:1px solid #d7e2de;
+  border-radius:13px;
+  background:#fbfdfc;
+  text-align:center;
+  font-size:20px;
+  font-weight:800;
+  color:#14364b;
+  outline:none;
+}
+
+.sg-otp-box:focus{
+  border-color:#15936a;
+  box-shadow:0 0 0 4px rgba(21,147,106,.08);
+}
+
+.sg-otp-info{
+  text-align:center;
+  color:#71808a;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:17px;
+}
+
+.sg-resend{
+  display:block;
+  margin:14px auto 0;
+  border:0;
+  background:transparent;
+  color:#087653;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+/* ---------- PROVIDER VERIFICATION ---------- */
+
+.sg-provider-extra{
+  display:none;
+}
+
+.sg-provider-extra.sg-active{
+  display:block;
+}
+
+.sg-upload-box{
+  border:1.5px dashed #b9d8ce;
+  border-radius:16px;
+  background:#f7fbf9;
+  padding:15px;
+  margin-bottom:15px;
+}
+
+.sg-upload-title{
+  color:#23475a;
+  font-size:13px;
+  font-weight:800;
+  margin-bottom:5px;
+}
+
+.sg-upload-text{
+  color:#78878e;
+  font-size:12px;
+  line-height:1.45;
+  margin-bottom:11px;
+}
+
+.sg-file{
+  width:100%;
+  font-size:12px;
+  color:#61747d;
+}
+
+.sg-verification-warning{
+  padding:12px 13px;
+  border-radius:14px;
+  background:#fff8e9;
+  color:#765b24;
+  font-size:12px;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+
+/* ---------- LANGUAGE ---------- */
+
+.sg-language-row{
+  display:flex;
+  justify-content:center;
+  gap:7px;
+  margin-top:18px;
+}
+
+.sg-language-btn{
+  border:1px solid #dbe5e1;
+  background:#fff;
+  color:#6b7b83;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:11px;
+  font-weight:700;
+}
+
+/* ---------- HIDDEN ---------- */
+
+.sg-hidden{
+  display:none !important;
+}
+
+@media(max-width:380px){
+  .sg-auth-card{
+    padding:22px 16px;
+  }
+
+  .sg-otp-box{
+    width:39px;
+  }
+
+  .sg-auth-brand h2{
+    font-size:27px;
+  }
+}
+</style>
+
+
+<!-- =========================================================
+     AUTH SCREEN
+     ========================================================= -->
+
+<section id="sg-auth-screen">
+
+  <div class="sg-auth-wrap">
+
+    <button
+      type="button"
+      class="sg-auth-back"
+      id="sg-auth-back">
+      ← Back
+    </button>
+
+
+    <!-- SAME SERVICEGO PREMIUM LOGO -->
+
+    <div class="sg-auth-brand">
+
+      <div class="sg-logo-premium">
+
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M8 34
+                   C15 34 17 34 21 34
+                   L25 25
+                   L29 42
+                   L34 31
+                   L38 35
+                   L55 35"/>
+        </svg>
+
+      </div>
+
+      <h2>ServiceGo</h2>
+      <p>Trusted services, right when you need them.</p>
+
+    </div>
+
+
+    <!-- =====================================================
+         CUSTOMER AUTH
+         MOBILE OTP ONLY
+         ===================================================== -->
+
+    <div
+      id="sg-customer-auth"
+      class="sg-auth-card sg-hidden">
+
+      <div class="sg-role-badge">
+        <span class="sg-role-dot"></span>
+        Customer
+      </div>
+
+      <h3>Continue as Customer</h3>
+
+      <p class="sg-subtitle">
+        Find trusted local professionals and manage your service
+        requests using your mobile number.
+      </p>
+
+
+      <!-- CUSTOMER MOBILE -->
+
+      <div id="sg-customer-mobile-box">
+
+        <div class="sg-field">
+
+          <label for="sg-customer-phone">
+            Mobile number
+          </label>
+
+          <div class="sg-phone-row">
+
+            <div class="sg-country-code">
+              +91
+            </div>
+
+            <input
+              id="sg-customer-phone"
+              class="sg-input"
+              type="tel"
+              inputmode="numeric"
+              maxlength="10"
+              placeholder="Enter mobile number"
+              autocomplete="tel">
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          class="sg-primary-btn"
+          id="sg-customer-send-otp">
+          Continue with OTP
+        </button>
+
+
+        <div class="sg-secure-note">
+          <strong>Secure login:</strong>
+          Customer accounts use mobile OTP only.
+          No email login is required.
+        </div>
+
+      </div>
+
+
+      <!-- CUSTOMER OTP -->
+
+      <div
+        id="sg-customer-otp-box"
+        class="sg-otp-screen">
+
+        <div class="sg-otp-info">
+          Enter the 6-digit OTP sent to your mobile number.
+        </div>
+
+        <div class="sg-otp-boxes">
+
+          <input class="sg-otp-box" maxlength="1" inputmode="numeric">
+          <input class="sg-otp-box" maxlength="1" inputmode="numeric">
+          <input class="sg-otp-box" maxlength="1" inputmode="numeric">
+          <input class="sg-otp-box" maxlength="1" inputmode="numeric">
+          <input class="sg-otp-box" maxlength="1" inputmode="numeric">
+          <input class="sg-otp-box" maxlength="1" inputmode="numeric">
+
+        </div>
+
+        <button
+          type="button"
+          class="sg-primary-btn"
+          id="sg-customer-verify-otp">
+          Verify & Continue
+        </button>
+
+        <button
+          type="button"
+          class="sg-resend"
+          id="sg-customer-resend">
+          Resend OTP
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SERVICE PROVIDER AUTH
+         MOBILE + EMAIL + VERIFICATION
+         ===================================================== -->
+
+    <div
+      id="sg-provider-auth"
+      class="sg-auth-card sg-hidden">
+
+      <div class="sg-role-badge">
+        <span class="sg-role-dot"></span>
+        Service Provider
+      </div>
+
+      <h3>Join as Service Provider</h3>
+
+      <p class="sg-subtitle">
+        Create a verified provider profile and offer your
+        services to customers in your local area.
+      </p>
+
+
+      <!-- PROVIDER BASIC DETAILS -->
+
+      <div id="sg-provider-basic">
+
+        <div class="sg-field">
+
+          <label for="sg-provider-name">
+            Full name
+          </label>
+
+          <input
+            id="sg-provider-name"
+            class="sg-input"
+            type="text"
+            placeholder="Enter your full name"
+            autocomplete="name">
+
+        </div>
+
+
+        <div class="sg-field">
+
+          <label for="sg-provider-phone">
+            Mobile number
+          </label>
+
+          <div class="sg-phone-row">
+
+            <div class="sg-country-code">
+              +91
+            </div>
+
+            <input
+              id="sg-provider-phone"
+              class="sg-input"
+              type="tel"
+              inputmode="numeric"
+              maxlength="10"
+              placeholder="Enter mobile number"
+              autocomplete="tel">
+
+          </div>
+
+        </div>
+
+
+        <div class="sg-field">
+
+          <label for="sg-provider-email">
+            Email address
+          </label>
+
+          <input
+            id="sg-provider-email"
+            class="sg-input"
+            type="email"
+            placeholder="Enter email address"
+            autocomplete="email">
+
+        </div>
+
+
+        <button
+          type="button"
+          class="sg-primary-btn"
+          id="sg-provider-continue">
+          Continue to Verification
+        </button>
+
+      </div>
+
+
+      <!-- PROVIDER VERIFICATION -->
+
+      <div
+        id="sg-provider-verification"
+        class="sg-provider-extra">
+
+        <div class="sg-verification-warning">
+          <strong>Provider verification required.</strong><br>
+          Before offering services, your identity and business
+          information must be submitted for verification.
+        </div>
+
+
+        <div class="sg-field">
+
+          <label for="sg-provider-document">
+            Verification document
+          </label>
+
+          <select
+            id="sg-provider-document"
+            class="sg-input">
+
+            <option value="">
+              Select document
+            </option>
+
+            <option value="pan">
+              PAN Card
+            </option>
+
+            <option value="gst">
+              GST Number
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div
+          id="sg-pan-field"
+          class="sg-field sg-hidden">
+
+          <label for="sg-pan-number">
+            PAN number
+          </label>
+
+          <input
+            id="sg-pan-number"
+            class="sg-input"
+            type="text"
+            maxlength="10"
+            placeholder="Enter PAN number">
+
+        </div>
+
+
+        <div
+          id="sg-gst-field"
+          class="sg-field sg-hidden">
+
+          <label for="sg-gst-number">
+            GST number
+          </label>
+
+          <input
+            id="sg-gst-number"
+            class="sg-input"
+            type="text"
+            maxlength="15"
+            placeholder="Enter GST number">
+
+        </div>
+
+
+        <!-- SHOP / WORK PHOTO -->
+
+        <div class="sg-upload-box">
+
+          <div class="sg-upload-title">
+            Shop / workplace photo
+          </div>
+
+          <div class="sg-upload-text">
+            Upload a clear photo of your shop or workplace.
+          </div>
+
+          <input
+            id="sg-shop-photo"
+            class="sg-file"
+            type="file"
+            accept="image/*">
+
+        </div>
+
+
+        <!-- SELFIE -->
+
+        <div class="sg-upload-box">
+
+          <div class="sg-upload-title">
+            Your photo / selfie
+          </div>
+
+          <div class="sg-upload-text">
+            Upload a clear recent photo of yourself for
+            provider verification.
+          </div>
+
+          <input
+            id="sg-provider-selfie"
+            class="sg-file"
+            type="file"
+            accept="image/*">
+
+        </div>
+
+
+        <button
+          type="button"
+          class="sg-primary-btn"
+          id="sg-provider-submit">
+          Submit for Verification
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- LANGUAGE -->
+
+    <div class="sg-language-row">
+
+      <button type="button" class="sg-language-btn">
+        हिन्दी
+      </button>
+
+      <button type="button" class="sg-language-btn">
+        ગુજરાતી
+      </button>
+
+      <button type="button" class="sg-language-btn">
+        English
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+(function(){
+
+  /* ========================================================
+     SERVICEGO PART 3 LOGIC
+     ======================================================== */
+
+  const authScreen =
+    document.getElementById("sg-auth-screen");
+
+  const customerAuth =
+    document.getElementById("sg-customer-auth");
+
+  const providerAuth =
+    document.getElementById("sg-provider-auth");
+
+  const backButton =
+    document.getElementById("sg-auth-back");
+
+
+  /* --------------------------------------------------------
+     OPEN CUSTOMER / PROVIDER FROM PART 2
+     -------------------------------------------------------- */
+
+  window.sgOpenCustomerAuth = function(){
+
+    if(!authScreen) return;
+
+    authScreen.classList.add("sg-show");
+
+    customerAuth.classList.remove("sg-hidden");
+    providerAuth.classList.add("sg-hidden");
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  };
+
+
+  window.sgOpenProviderAuth = function(){
+
+    if(!authScreen) return;
+
+    authScreen.classList.add("sg-show");
+
+    providerAuth.classList.remove("sg-hidden");
+    customerAuth.classList.add("sg-hidden");
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  };
+
+
+  /* --------------------------------------------------------
+     BACK
+     -------------------------------------------------------- */
+
+  if(backButton){
+
+    backButton.addEventListener("click",function(){
+
+      authScreen.classList.remove("sg-show");
+
+      customerAuth.classList.add("sg-hidden");
+      providerAuth.classList.add("sg-hidden");
+
+    });
+
+  }
+
+
+  /* --------------------------------------------------------
+     CUSTOMER OTP UI
+     -------------------------------------------------------- */
+
+  const customerPhone =
+    document.getElementById("sg-customer-phone");
+
+  const customerSendOtp =
+    document.getElementById("sg-customer-send-otp");
+
+  const customerMobileBox =
+    document.getElementById("sg-customer-mobile-box");
+
+  const customerOtpBox =
+    document.getElementById("sg-customer-otp-box");
+
+  const customerVerify =
+    document.getElementById("sg-customer-verify-otp");
+
+
+  if(customerSendOtp){
+
+    customerSendOtp.addEventListener("click",function(){
+
+      const phone =
+        customerPhone.value.replace(/\D/g,"");
+
+      if(phone.length !== 10){
+
+        alert("Please enter a valid 10-digit mobile number.");
+
+        return;
+      }
+
+      /*
+       * UI FLOW ONLY
+       * Real OTP delivery will be connected in the
+       * backend/authentication part later.
+       */
+
+      customerMobileBox.classList.add("sg-hidden");
+      customerOtpBox.classList.add("sg-active");
+
+      const firstOtp =
+        customerOtpBox.querySelector(".sg-otp-box");
+
+      if(firstOtp){
+        setTimeout(function(){
+          firstOtp.focus();
+        },100);
+      }
+
+    });
+
+  }
+
+
+  /* --------------------------------------------------------
+     OTP AUTO MOVE
+     -------------------------------------------------------- */
+
+  const otpInputs =
+    document.querySelectorAll("#sg-customer-otp-box .sg-otp-box");
+
+  otpInputs.forEach(function(input,index){
+
+    input.addEventListener("input",function(){
+
+      this.value =
+        this.value.replace(/\D/g,"").slice(0,1);
+
+      if(this.value && otpInputs[index + 1]){
+        otpInputs[index + 1].focus();
+      }
+
+    });
+
+    input.addEventListener("keydown",function(event){
+
+      if(
+        event.key === "Backspace" &&
+        !this.value &&
+        otpInputs[index - 1]
+      ){
+        otpInputs[index - 1].focus();
+      }
+
+    });
+
+  });
+
+
+  /* --------------------------------------------------------
+     CUSTOMER VERIFY
+     -------------------------------------------------------- */
+
+  if(customerVerify){
+
+    customerVerify.addEventListener("click",function(){
+
+      let otp = "";
+
+      otpInputs.forEach(function(input){
+        otp += input.value;
+      });
+
+      if(otp.length !== 6){
+
+        alert("Please enter the complete 6-digit OTP.");
+
+        return;
+      }
+
+      /*
+       * Real OTP verification will be connected later.
+       * This prevents the UI from pretending that an
+       * unverified account is already authenticated.
+       */
+
+      alert(
+        "OTP verification service will be connected in the next authentication step."
+      );
+
+    });
+
+  }
+
+
+  /* --------------------------------------------------------
+     PROVIDER BASIC DETAILS
+     -------------------------------------------------------- */
+
+  const providerContinue =
+    document.getElementById("sg-provider-continue");
+
+  const providerBasic =
+    document.getElementById("sg-provider-basic");
+
+  const providerVerification =
+    document.getElementById("sg-provider-verification");
+
+
+  if(providerContinue){
+
+    providerContinue.addEventListener("click",function(){
+
+      const name =
+        document.getElementById("sg-provider-name").value.trim();
+
+      const phone =
+        document.getElementById("sg-provider-phone")
+          .value.replace(/\D/g,"");
+
+      const email =
+        document.getElementById("sg-provider-email")
+          .value.trim();
+
+
+      if(name.length < 2){
+
+        alert("Please enter your full name.");
+
+        return;
+      }
+
+
+      if(phone.length !== 10){
+
+        alert("Please enter a valid 10-digit mobile number.");
+
+        return;
+      }
+
+
+      if(
+        !email ||
+        !email.includes("@") ||
+        !email.includes(".")
+      ){
+
+        alert("Please enter a valid email address.");
+
+        return;
+      }
+
+
+      providerBasic.classList.add("sg-hidden");
+      providerVerification.classList.add("sg-active");
+
+    });
+
+  }
+
+
+  /* --------------------------------------------------------
+     DOCUMENT TYPE
+     -------------------------------------------------------- */
+
+  const documentSelect =
+    document.getElementById("sg-provider-document");
+
+  const panField =
+    document.getElementById("sg-pan-field");
+
+  const gstField =
+    document.getElementById("sg-gst-field");
+
+
+  if(documentSelect){
+
+    documentSelect.addEventListener("change",function(){
+
+      panField.classList.add("sg-hidden");
+      gstField.classList.add("sg-hidden");
+
+      if(this.value === "pan"){
+        panField.classList.remove("sg-hidden");
+      }
+
+      if(this.value === "gst"){
+        gstField.classList.remove("sg-hidden");
+      }
+
+    });
+
+  }
+
+
+  /* --------------------------------------------------------
+     PROVIDER SUBMIT
+     -------------------------------------------------------- */
+
+  const providerSubmit =
+    document.getElementById("sg-provider-submit");
+
+
+  if(providerSubmit){
+
+    providerSubmit.addEventListener("click",function(){
+
+      const documentType =
+        document.getElementById("sg-provider-document").value;
+
+      const shopPhoto =
+        document.getElementById("sg-shop-photo").files.length;
+
+      const selfie =
+        document.getElementById("sg-provider-selfie").files.length;
+
+
+      if(!documentType){
+
+        alert("Please select PAN Card or GST Number.");
+
+        return;
+      }
+
+
+      if(documentType === "pan"){
+
+        const pan =
+          document.getElementById("sg-pan-number")
+            .value.trim();
+
+        if(pan.length !== 10){
+
+          alert("Please enter a valid PAN number.");
+
+          return;
+        }
+
+      }
+
+
+      if(documentType === "gst"){
+
+        const gst =
+          document.getElementById("sg-gst-number")
+            .value.trim();
+
+        if(gst.length !== 15){
+
+          alert("Please enter a valid GST number.");
+
+          return;
+        }
+
+      }
+
+
+      if(!shopPhoto){
+
+        alert("Please upload your shop/workplace photo.");
+
+        return;
+      }
+
+
+      if(!selfie){
+
+        alert("Please upload your photo/selfie.");
+
+        return;
+      }
+
+
+      alert(
+        "Your provider verification details are ready. Secure backend verification will be connected in the next step."
+      );
+
+    });
+
+  }
+
+
+})();
+</script>
+
+<!-- =========================================================
+     END OF PART 3
+  
+     ========================================================= -->
     
