@@ -7115,3 +7115,663 @@ input:focus-visible {
    ========================================================= */
 
 </style>
+<!-- =========================================================
+     SERVICEGO PART 10
+     CORE APP NAVIGATION ENGINE
+     Paste directly below PART 9
+     ========================================================= -->
+
+<script>
+(function () {
+  "use strict";
+
+  /* =========================================================
+     SERVICEGO CORE CONTROLLER
+     ========================================================= */
+
+  function startServiceGo() {
+
+    const app = document.getElementById("servicego-app");
+
+    if (!app) return;
+
+
+    /* =======================================================
+       SCREEN CONTROL
+       ======================================================= */
+
+    function getScreens() {
+      return app.querySelectorAll(".screen");
+    }
+
+
+    function showScreen(screenId) {
+
+      const target = document.getElementById(screenId);
+
+      if (!target) return false;
+
+      getScreens().forEach(function (screen) {
+        screen.classList.add("hidden");
+        screen.setAttribute("aria-hidden", "true");
+      });
+
+      target.classList.remove("hidden");
+      target.setAttribute("aria-hidden", "false");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "instant"
+      });
+
+      return true;
+    }
+
+
+    /* =======================================================
+       LOADING → WELCOME
+       ======================================================= */
+
+    const loadingScreen =
+      document.getElementById("loading-screen");
+
+    const welcomeScreen =
+      document.getElementById("welcome-screen");
+
+
+    if (loadingScreen && welcomeScreen) {
+
+      setTimeout(function () {
+
+        loadingScreen.classList.add("hidden");
+
+        welcomeScreen.classList.remove("hidden");
+
+        welcomeScreen.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+      }, 1100);
+
+    }
+
+
+    /* =======================================================
+       ROLE SELECTION
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const roleButton =
+        event.target.closest(".role-card");
+
+      if (!roleButton) return;
+
+      const role =
+        roleButton.getAttribute("data-role");
+
+
+      if (role === "customer") {
+
+        showScreen("customer-login-screen");
+
+        return;
+      }
+
+
+      if (role === "provider") {
+
+        showScreen("provider-intro-screen");
+
+        return;
+      }
+
+    });
+
+
+    /* =======================================================
+       PROVIDER START
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("#provider-start");
+
+      if (!button) return;
+
+
+      const possibleScreens = [
+        "provider-registration-screen",
+        "provider-register-screen",
+        "provider-signup-screen"
+      ];
+
+
+      for (let i = 0; i < possibleScreens.length; i++) {
+
+        if (document.getElementById(possibleScreens[i])) {
+
+          showScreen(possibleScreens[i]);
+
+          return;
+        }
+
+      }
+
+    });
+
+
+    /* =======================================================
+       CUSTOMER CONTINUE
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("#customer-continue");
+
+      if (!button) return;
+
+
+      const mobile =
+        document.getElementById("customer-mobile");
+
+
+      if (mobile) {
+
+        const value =
+          mobile.value.replace(/\D/g, "");
+
+
+        if (value.length !== 10) {
+
+          mobile.focus();
+
+          showServiceGoMessage(
+            "Please enter a valid 10-digit mobile number."
+          );
+
+          return;
+        }
+
+      }
+
+
+      /* Continue to customer home for now.
+         Authentication will be connected later. */
+
+      showScreen("customer-home-screen");
+
+    });
+
+
+    /* =======================================================
+       GOOGLE CUSTOMER BUTTON
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("#google-customer");
+
+      if (!button) return;
+
+
+      showServiceGoMessage(
+        "Google sign-in will be connected in the next setup."
+      );
+
+    });
+
+
+    /* =======================================================
+       EXISTING ACCOUNT / SIGN IN
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("#existing-account-btn");
+
+      if (!button) return;
+
+      showScreen("customer-login-screen");
+
+    });
+
+
+    /* =======================================================
+       BACK BUTTONS
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest(".back-button");
+
+      if (!button) return;
+
+
+      const destination =
+        button.getAttribute("data-back");
+
+
+      if (destination) {
+
+        showScreen(destination);
+
+      }
+
+    });
+
+
+    /* =======================================================
+       SERVICE CARD SELECTION
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const card =
+        event.target.closest(".service-card");
+
+      if (!card) return;
+
+
+      const service =
+        card.getAttribute("data-service");
+
+
+      if (!service) return;
+
+
+      /* Store selected service */
+
+      try {
+
+        sessionStorage.setItem(
+          "servicego_selected_service",
+          service
+        );
+
+      } catch (error) {
+        /* Storage unavailable — continue normally */
+      }
+
+
+      /* Visual selection */
+
+      app.querySelectorAll(".service-card")
+        .forEach(function (item) {
+          item.classList.remove("selected");
+        });
+
+
+      card.classList.add("selected");
+
+
+      showServiceGoMessage(
+        service + " selected."
+      );
+
+    });
+
+
+    /* =======================================================
+       SEARCH CLEAR BUTTON
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("#clear-service-search");
+
+      if (!button) return;
+
+
+      const input =
+        document.getElementById("service-search");
+
+
+      if (input) {
+
+        input.value = "";
+
+        input.focus();
+
+      }
+
+    });
+
+
+    /* =======================================================
+       SERVICE SEARCH
+       ======================================================= */
+
+    const searchInput =
+      document.getElementById("service-search");
+
+
+    if (searchInput) {
+
+      searchInput.addEventListener(
+        "input",
+        function () {
+
+          const query =
+            this.value.trim().toLowerCase();
+
+
+          const cards =
+            app.querySelectorAll(".service-card");
+
+
+          cards.forEach(function (card) {
+
+            const name =
+              (
+                card.getAttribute("data-service") ||
+                card.textContent ||
+                ""
+              ).toLowerCase();
+
+
+            if (!query || name.includes(query)) {
+
+              card.style.display = "";
+
+            } else {
+
+              card.style.display = "none";
+
+            }
+
+          });
+
+        }
+      );
+
+    }
+
+
+    /* =======================================================
+       BOTTOM NAVIGATION
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const navButton =
+        event.target.closest(".nav-item");
+
+      if (!navButton) return;
+
+
+      const destination =
+        navButton.getAttribute("data-nav");
+
+
+      if (!destination) return;
+
+
+      app.querySelectorAll(".nav-item")
+        .forEach(function (item) {
+
+          item.classList.remove("active");
+
+        });
+
+
+      navButton.classList.add("active");
+
+
+      /*
+        Convert:
+
+        customer-home
+        customer-bookings
+        customer-help
+        customer-profile
+
+        into:
+
+        customer-home-screen
+        customer-bookings-screen
+        customer-help-screen
+        customer-profile-screen
+      */
+
+      const screenId =
+        destination + "-screen";
+
+
+      if (document.getElementById(screenId)) {
+
+        showScreen(screenId);
+
+        return;
+      }
+
+
+      /*
+        If the screen is not created yet,
+        don't break the application.
+      */
+
+      showServiceGoMessage(
+        "This section is being prepared."
+      );
+
+    });
+
+
+    /* =======================================================
+       GENERIC data-open SUPPORT
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("[data-open]");
+
+      if (!button) return;
+
+
+      const destination =
+        button.getAttribute("data-open");
+
+
+      if (destination &&
+          document.getElementById(destination)) {
+
+        showScreen(destination);
+
+      }
+
+    });
+
+
+    /* =======================================================
+       NOTIFICATION BUTTON
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("#customer-notification-btn");
+
+      if (!button) return;
+
+
+      const screenOptions = [
+        "notifications-screen",
+        "customer-notifications-screen"
+      ];
+
+
+      for (let i = 0; i < screenOptions.length; i++) {
+
+        if (document.getElementById(screenOptions[i])) {
+
+          showScreen(screenOptions[i]);
+
+          return;
+        }
+
+      }
+
+
+      showServiceGoMessage(
+        "No new notifications."
+      );
+
+    });
+
+
+    /* =======================================================
+       CUSTOMER PROFILE HEADER BUTTON
+       ======================================================= */
+
+    app.addEventListener("click", function (event) {
+
+      const button =
+        event.target.closest("#customer-profile-btn");
+
+      if (!button) return;
+
+
+      if (document.getElementById(
+        "customer-profile-screen"
+      )) {
+
+        showScreen("customer-profile-screen");
+
+        return;
+      }
+
+
+      showServiceGoMessage(
+        "Profile section is being prepared."
+      );
+
+    });
+
+
+    /* =======================================================
+       SMALL SERVICEGO MESSAGE
+       ======================================================= */
+
+    function showServiceGoMessage(message) {
+
+      let box =
+        document.getElementById(
+          "servicego-message"
+        );
+
+
+      if (!box) {
+
+        box =
+          document.createElement("div");
+
+        box.id =
+          "servicego-message";
+
+        box.setAttribute(
+          "role",
+          "status"
+        );
+
+        box.style.cssText = `
+          position:fixed;
+          left:50%;
+          bottom:86px;
+          transform:translateX(-50%) translateY(15px);
+          z-index:99999;
+          max-width:calc(100vw - 32px);
+          padding:12px 18px;
+          border-radius:14px;
+          background:#172b46;
+          color:#ffffff;
+          font-family:"DM Sans",Arial,sans-serif;
+          font-size:13px;
+          font-weight:600;
+          line-height:1.35;
+          text-align:center;
+          box-shadow:0 10px 30px rgba(0,0,0,.18);
+          opacity:0;
+          transition:all .25s ease;
+          pointer-events:none;
+        `;
+
+        document.body.appendChild(box);
+
+      }
+
+
+      box.textContent = message;
+
+      requestAnimationFrame(function () {
+
+        box.style.opacity = "1";
+
+        box.style.transform =
+          "translateX(-50%) translateY(0)";
+
+      });
+
+
+      clearTimeout(
+        box._serviceGoTimer
+      );
+
+
+      box._serviceGoTimer =
+        setTimeout(function () {
+
+          box.style.opacity = "0";
+
+          box.style.transform =
+            "translateX(-50%) translateY(15px)";
+
+        }, 2200);
+
+    }
+
+
+    /* =======================================================
+       EXPOSE CORE CONTROLLER
+       Future parts can use this.
+       ======================================================= */
+
+    window.ServiceGoApp = {
+      showScreen: showScreen
+    };
+
+
+  }
+
+
+  /* =========================================================
+     START AFTER COMPLETE HTML LOAD
+     ========================================================= */
+
+  if (document.readyState === "loading") {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      startServiceGo
+    );
+
+  } else {
+
+    startServiceGo();
+
+  }
+
+})();
+</script>
+
+<!-- =========================================================
+     END SERVICEGO PART 10
+     ========================================================= -->
