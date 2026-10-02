@@ -6759,3 +6759,359 @@ input:focus-visible {
    END SERVICEGO PART 8
    ========================================================= */
 </style>
+<!-- =========================================================
+     SERVICEGO PART 9
+     FINAL LOGO CORRECTION + MOBILE HEADER FIX
+     Paste directly below PART 8
+     ========================================================= -->
+
+<style>
+
+/* =========================================================
+   SERVICEGO FINAL BRAND SYSTEM
+   ========================================================= */
+
+#servicego-app{
+  --sg-green:#238b5b;
+  --sg-green-dark:#1b754c;
+  --sg-navy:#172b46;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   STOP HORIZONTAL OVERFLOW
+   ========================================================= */
+
+#servicego-app{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden !important;
+  box-sizing:border-box;
+}
+
+#servicego-app *{
+  box-sizing:border-box;
+}
+
+
+/* =========================================================
+   BRAND CONTAINER
+   ========================================================= */
+
+#servicego-app .brand{
+  display:flex !important;
+  align-items:center !important;
+  min-width:0 !important;
+  max-width:100% !important;
+  gap:14px !important;
+}
+
+
+/* =========================================================
+   FINAL SERVICEGO ICON
+   ========================================================= */
+
+#servicego-app .brand-mark,
+#servicego-app .brand-mark.small,
+#servicego-app .brand-mark.tiny{
+
+  position:relative !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  flex:none !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #299866 0%,
+      #238b5b 52%,
+      #1b754c 100%
+    ) !important;
+
+  border:0 !important;
+
+  overflow:hidden !important;
+
+  box-shadow:
+    0 8px 22px rgba(23,43,70,.13),
+    inset 0 1px 1px rgba(255,255,255,.24) !important;
+
+}
+
+
+/* =========================================================
+   REMOVE OLD LOGO SYMBOLS
+   ========================================================= */
+
+#servicego-app .brand-mark span{
+  display:none !important;
+}
+
+
+/* =========================================================
+   REMOVE PREVIOUS BROKEN SVG
+   ========================================================= */
+
+#servicego-app .brand-mark::before{
+  display:none !important;
+}
+
+
+/* =========================================================
+   CLEAN WHITE HEARTBEAT
+   ========================================================= */
+
+#servicego-app .brand-mark::after{
+
+  content:"" !important;
+
+  position:absolute !important;
+
+  left:50% !important;
+  top:50% !important;
+
+  transform:translate(-50%,-50%) !important;
+
+  width:72% !important;
+  height:42% !important;
+
+  background:none !important;
+
+  border:0 !important;
+
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 70'%3E%3Cpath d='M5 38H42L51 38L61 18L72 56L85 34H155' fill='none' stroke='%23ffffff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+
+  background-repeat:no-repeat !important;
+  background-position:center !important;
+  background-size:100% 100% !important;
+
+  z-index:5 !important;
+}
+
+
+/* =========================================================
+   NORMAL LOGO
+   ========================================================= */
+
+#servicego-app .brand-mark{
+  width:58px !important;
+  height:58px !important;
+  min-width:58px !important;
+  min-height:58px !important;
+  border-radius:17px !important;
+}
+
+
+/* =========================================================
+   SMALL LOGO
+   ========================================================= */
+
+#servicego-app .brand-mark.small{
+  width:52px !important;
+  height:52px !important;
+  min-width:52px !important;
+  min-height:52px !important;
+  border-radius:15px !important;
+}
+
+
+/* =========================================================
+   TINY LOGO
+   ========================================================= */
+
+#servicego-app .brand-mark.tiny{
+  width:38px !important;
+  height:38px !important;
+  min-width:38px !important;
+  min-height:38px !important;
+  border-radius:11px !important;
+}
+
+
+/* =========================================================
+   WORDMARK
+   ========================================================= */
+
+#servicego-app .brand-name,
+#servicego-app .brand-title,
+#servicego-app .mini-brand strong{
+
+  color:#172b46 !important;
+
+  font-family:
+    Manrope,
+    "DM Sans",
+    Arial,
+    sans-serif !important;
+
+  font-weight:800 !important;
+
+  letter-spacing:-1.3px !important;
+
+  white-space:nowrap !important;
+
+  overflow:hidden !important;
+
+  text-overflow:ellipsis !important;
+
+  max-width:calc(100vw - 105px) !important;
+}
+
+
+/* =========================================================
+   LOADING WORDMARK
+   ========================================================= */
+
+#servicego-app .brand-name{
+  font-size:30px !important;
+}
+
+
+/* =========================================================
+   MAIN HEADER WORDMARK
+   ========================================================= */
+
+#servicego-app .brand-title{
+  font-size:21px !important;
+  line-height:1.05 !important;
+}
+
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+#servicego-app .brand-subtitle{
+
+  color:#74818d !important;
+
+  font-family:
+    "DM Sans",
+    Arial,
+    sans-serif !important;
+
+  font-size:11px !important;
+
+  font-weight:600 !important;
+
+  white-space:nowrap !important;
+
+  overflow:hidden !important;
+
+  text-overflow:ellipsis !important;
+
+  max-width:calc(100vw - 105px) !important;
+}
+
+
+/* =========================================================
+   MINI BRAND
+   ========================================================= */
+
+#servicego-app .mini-brand{
+
+  display:flex !important;
+
+  align-items:center !important;
+
+  gap:10px !important;
+
+  min-width:0 !important;
+
+  max-width:100% !important;
+}
+
+
+/* =========================================================
+   MOBILE — EXACTLY CONTROLLED
+   ========================================================= */
+
+@media(max-width:600px){
+
+  #servicego-app .brand{
+    gap:11px !important;
+    max-width:calc(100vw - 20px) !important;
+  }
+
+  #servicego-app .brand-mark{
+    width:54px !important;
+    height:54px !important;
+    min-width:54px !important;
+    min-height:54px !important;
+    border-radius:16px !important;
+  }
+
+  #servicego-app .brand-mark.small{
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    min-height:48px !important;
+    border-radius:14px !important;
+  }
+
+  #servicego-app .brand-mark.tiny{
+    width:36px !important;
+    height:36px !important;
+    min-width:36px !important;
+    min-height:36px !important;
+    border-radius:10px !important;
+  }
+
+  #servicego-app .brand-mark::after{
+    width:72% !important;
+    height:40% !important;
+  }
+
+  #servicego-app .brand-name{
+    font-size:27px !important;
+    letter-spacing:-1.2px !important;
+  }
+
+  #servicego-app .brand-title{
+    font-size:19px !important;
+  }
+
+  #servicego-app .brand-subtitle{
+    font-size:10px !important;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media(max-width:380px){
+
+  #servicego-app .brand{
+    gap:9px !important;
+  }
+
+  #servicego-app .brand-mark{
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    min-height:48px !important;
+  }
+
+  #servicego-app .brand-name{
+    font-size:24px !important;
+  }
+
+  #servicego-app .brand-title{
+    font-size:17px !important;
+  }
+
+}
+
+
+/* =========================================================
+   END SERVICEGO PART 9
+   ========================================================= */
+
+</style>
