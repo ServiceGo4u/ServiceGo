@@ -2759,4 +2759,166 @@
      END OF PART 3
   
      ========================================================= -->
+    <!-- =========================================================
+     SERVICEGO — PART 4
+     LOADING ENGINE + SCREEN NAVIGATION
+     ========================================================= -->
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------
+     SERVICEGO INITIALIZATION
+     --------------------------------------------------------- */
+
+  function startServiceGo() {
+
+    var loadingScreen =
+      document.getElementById("loading-screen") ||
+      document.getElementById("sg-loading-screen");
+
+    var welcomeScreen =
+      document.getElementById("welcome-screen");
+
+    var progressBar =
+      document.getElementById("progress-bar") ||
+      document.getElementById("sg-progress-bar");
+
+    /* If the main screens are not ready yet,
+       do not break the application. */
+    if (!loadingScreen) {
+      console.warn("ServiceGo: Loading screen not found.");
+      return;
+    }
+
+    /* -------------------------------------------------------
+       FORCE LOADING SCREEN TO COMPLETE
+       ------------------------------------------------------- */
+
+    var progress = 0;
+    var duration = 1800;
+    var intervalTime = 30;
+    var totalSteps = Math.ceil(duration / intervalTime);
+    var step = 100 / totalSteps;
+
+    var loader = setInterval(function () {
+
+      progress += step;
+
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(loader);
+
+        if (progressBar) {
+          progressBar.style.width = "100%";
+        }
+
+        /* Small finishing delay gives the app
+           a smooth premium transition. */
+        setTimeout(function () {
+          openWelcomeScreen();
+        }, 250);
+
+      } else {
+
+        if (progressBar) {
+          progressBar.style.width = progress + "%";
+        }
+
+      }
+
+    }, intervalTime);
+
+
+    /* -------------------------------------------------------
+       OPEN WELCOME / ROLE SCREEN
+       ------------------------------------------------------- */
+
+    function openWelcomeScreen() {
+
+      loadingScreen.classList.add("hidden");
+      loadingScreen.classList.add("screen-hidden");
+
+      loadingScreen.style.opacity = "0";
+      loadingScreen.style.pointerEvents = "none";
+
+      if (welcomeScreen) {
+
+        welcomeScreen.classList.remove("welcome-screen-hidden");
+        welcomeScreen.classList.remove("hidden");
+        welcomeScreen.classList.remove("screen-hidden");
+
+        welcomeScreen.style.display = "";
+        welcomeScreen.style.opacity = "1";
+        welcomeScreen.style.pointerEvents = "auto";
+
+      }
+
+      /* Keep loading screen out of the way
+         after the transition. */
+      setTimeout(function () {
+
+        loadingScreen.style.display = "none";
+
+      }, 450);
+    }
+
+
+    /* -------------------------------------------------------
+       SAFETY FALLBACK
+       -------------------------------------------------------
+       If another part of the application changes the loader
+       class, the application will still continue.
+       ------------------------------------------------------- */
+
+    setTimeout(function () {
+
+      if (
+        loadingScreen &&
+        loadingScreen.style.display !== "none"
+      ) {
+
+        if (
+          welcomeScreen &&
+          (
+            welcomeScreen.classList.contains("welcome-screen-hidden") ||
+            welcomeScreen.style.display === "none"
+          )
+        ) {
+
+          openWelcomeScreen();
+
+        }
+
+      }
+
+    }, 3500);
+
+  }
+
+
+  /* ---------------------------------------------------------
+     START AFTER HTML IS READY
+     --------------------------------------------------------- */
+
+  if (document.readyState === "loading") {
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      startServiceGo
+    );
+
+  } else {
+
+    startServiceGo();
+
+  }
+
+})();
+</script>
+
+<!-- =========================================================
+     END SERVICEGO — PART 4
+     ========================================================= -->
     
