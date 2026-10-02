@@ -1,0 +1,6032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#176b4d">
+  <meta name="description" content="ServiceGo connects customers with trusted local service providers for convenient service discovery and booking.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>ServiceGo — Local Services, Made Simple</title>
+
+  <!-- ServiceGo PART 1
+       Premium interface structure
+       All future parts will be pasted directly below this part.
+       Do NOT add this code anywhere else.
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div id="servicego-app">
+
+    <!-- =========================
+         APP LOADING SCREEN
+    ========================== -->
+
+    <section id="loading-screen" class="screen loading-screen">
+      <div class="loading-brand">
+        <div class="brand-mark">
+          <span>⌂</span>
+        </div>
+
+        <div class="brand-name">ServiceGo</div>
+
+        <div class="loading-line">
+          <span></span>
+        </div>
+
+        <p>Trusted services, right when you need them.</p>
+      </div>
+    </section>
+
+
+    <!-- =========================
+         WELCOME / ROLE SCREEN
+    ========================== -->
+
+    <section id="welcome-screen" class="screen welcome-screen hidden">
+
+      <header class="welcome-header">
+        <div class="brand">
+          <div class="brand-mark small">
+            <span>⌂</span>
+          </div>
+
+          <div>
+            <div class="brand-title">ServiceGo</div>
+            <div class="brand-subtitle">Local services, made easier</div>
+          </div>
+        </div>
+      </header>
+
+
+      <main class="welcome-content">
+
+        <div class="welcome-copy">
+          <span class="eyebrow">WELCOME TO SERVICEGO</span>
+
+          <h1>
+            Trusted help,<br>
+            <strong>when you need it.</strong>
+          </h1>
+
+          <p>
+            Find local professionals, compare available services,
+            connect directly and manage your service requests simply.
+          </p>
+        </div>
+
+
+        <!-- ROLE SELECTION -->
+
+        <div class="role-section">
+
+          <div class="section-label">
+            <span>How will you use ServiceGo?</span>
+          </div>
+
+
+          <!-- CUSTOMER -->
+
+          <button
+            type="button"
+            class="role-card"
+            data-role="customer"
+            aria-label="Continue as Customer">
+
+            <div class="role-icon customer-icon">
+              <span>⌂</span>
+            </div>
+
+            <div class="role-text">
+              <strong>Customer</strong>
+              <span>
+                Find and book trusted local professionals
+                for the service you need.
+              </span>
+            </div>
+
+            <div class="role-arrow">→</div>
+
+          </button>
+
+
+          <!-- PROVIDER -->
+
+          <button
+            type="button"
+            class="role-card"
+            data-role="provider"
+            aria-label="Continue as Service Provider">
+
+            <div class="role-icon provider-icon">
+              <span>✓</span>
+            </div>
+
+            <div class="role-text">
+              <strong>Service Provider</strong>
+              <span>
+                Offer your services, receive requests
+                and grow your local business.
+              </span>
+            </div>
+
+            <div class="role-arrow">→</div>
+
+          </button>
+
+        </div>
+
+
+        <!-- TRUST MESSAGE -->
+
+        <div class="trust-strip">
+
+          <div class="trust-icon">✓</div>
+
+          <div>
+            <strong>Your privacy matters</strong>
+            <span>
+              ServiceGo only asks for information needed
+              for the selected service experience.
+            </span>
+          </div>
+
+        </div>
+
+      </main>
+
+
+      <footer class="welcome-footer">
+        <span>Already using ServiceGo?</span>
+        <button type="button" id="existing-account-btn">
+          Sign in
+        </button>
+      </footer>
+
+    </section>
+
+
+    <!-- =========================
+         CUSTOMER LOGIN SCREEN
+    ========================== -->
+
+    <section id="customer-login-screen" class="screen auth-screen hidden">
+
+      <div class="auth-top">
+        <button
+          type="button"
+          class="back-button"
+          data-back="welcome-screen"
+          aria-label="Go back">
+          ←
+        </button>
+
+        <div class="mini-brand">
+          <div class="brand-mark tiny">
+            <span>⌂</span>
+          </div>
+          <strong>ServiceGo</strong>
+        </div>
+      </div>
+
+
+      <main class="auth-content">
+
+        <span class="eyebrow">CUSTOMER ACCESS</span>
+
+        <h1>
+          Find the right<br>
+          <strong>service for you.</strong>
+        </h1>
+
+        <p class="auth-description">
+          Continue to discover nearby professionals and manage
+          your service requests.
+        </p>
+
+
+        <div class="auth-card">
+
+          <label for="customer-mobile">
+            Mobile number
+          </label>
+
+          <div class="phone-field">
+
+            <span class="country-code">+91</span>
+
+            <input
+              id="customer-mobile"
+              type="tel"
+              inputmode="numeric"
+              maxlength="10"
+              placeholder="Your mobile number"
+              autocomplete="tel">
+
+          </div>
+
+
+          <button
+            type="button"
+            id="customer-continue"
+            class="primary-button">
+            Continue
+            <span>→</span>
+          </button>
+
+
+          <div class="divider">
+            <span>or</span>
+          </div>
+
+
+          <!-- Google button will be connected in later part -->
+
+          <button
+            type="button"
+            id="google-customer"
+            class="secondary-button">
+
+            <span class="google-symbol">G</span>
+
+            <span>Continue with Google</span>
+
+          </button>
+
+
+          <p class="login-note">
+            By continuing, you agree to ServiceGo's
+            Terms and Privacy Policy.
+          </p>
+
+        </div>
+
+      </main>
+
+
+      <footer class="auth-footer">
+        <button
+          type="button"
+          class="text-button"
+          data-open="privacy-screen">
+          Privacy Policy
+        </button>
+
+        <span>•</span>
+
+        <button
+          type="button"
+          class="text-button"
+          data-open="terms-screen">
+          Terms
+        </button>
+      </footer>
+
+    </section>
+
+
+    <!-- =========================
+         PROVIDER INTRO SCREEN
+    ========================== -->
+
+    <section id="provider-intro-screen" class="screen provider-intro hidden">
+
+      <div class="auth-top">
+
+        <button
+          type="button"
+          class="back-button"
+          data-back="welcome-screen"
+          aria-label="Go back">
+          ←
+        </button>
+
+        <div class="mini-brand">
+          <div class="brand-mark tiny">
+            <span>✓</span>
+          </div>
+
+          <strong>Provider</strong>
+        </div>
+
+      </div>
+
+
+      <main class="provider-intro-content">
+
+        <span class="eyebrow">SERVICE PROVIDER</span>
+
+        <h1>
+          Turn your skills<br>
+          into <strong>local work.</strong>
+        </h1>
+
+        <p>
+          Create a professional profile, receive service requests,
+          manage your availability and build your reputation.
+        </p>
+
+
+        <div class="provider-benefits">
+
+          <div class="benefit-card">
+            <div class="benefit-icon">✓</div>
+            <div>
+              <strong>Verified profile</strong>
+              <span>
+                Build customer confidence with your
+                service information.
+              </span>
+            </div>
+          </div>
+
+
+          <div class="benefit-card">
+            <div class="benefit-icon">↗</div>
+            <div>
+              <strong>More local opportunities</strong>
+              <span>
+                Receive relevant requests based on
+                your service and availability.
+              </span>
+            </div>
+          </div>
+
+
+          <div class="benefit-card">
+            <div class="benefit-icon">★</div>
+            <div>
+              <strong>Build your reputation</strong>
+              <span>
+                Complete jobs on time and grow through
+                customer feedback.
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="provider-start"
+          class="primary-button provider-start-button">
+
+          Start Provider Registration
+          <span>→</span>
+
+        </button>
+
+
+        <p class="provider-note">
+          Provider verification requirements will be shown
+          before registration is completed.
+        </p>
+
+      </main>
+
+    </section>
+
+
+    <!-- =========================
+         CUSTOMER HOME
+    ========================== -->
+
+    <section id="customer-home-screen" class="screen app-screen hidden">
+
+      <header class="app-header">
+
+        <div class="brand">
+          <div class="brand-mark small">
+            <span>⌂</span>
+          </div>
+
+          <div>
+            <div class="brand-title">ServiceGo</div>
+            <div class="brand-subtitle">Your neighbourhood, made easier</div>
+          </div>
+        </div>
+
+
+        <div class="header-actions">
+
+          <button
+            type="button"
+            class="icon-button"
+            id="customer-notification-btn"
+            aria-label="Notifications">
+            ♧
+          </button>
+
+          <button
+            type="button"
+            class="icon-button"
+            id="customer-profile-btn"
+            aria-label="Profile">
+            ◯
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <main class="home-content">
+
+        <div class="location-line">
+          <span>⌖</span>
+          <span id="customer-location">
+            Location not set
+          </span>
+        </div>
+
+
+        <div class="home-heading">
+          <span class="eyebrow">NEARBY, WHEN YOU NEED IT</span>
+
+          <h1>
+            What service<br>
+            <strong>do you need?</strong>
+          </h1>
+
+          <p>
+            Find local professionals for the little things
+            and the big ones.
+          </p>
+        </div>
+
+
+        <!-- SERVICE SEARCH -->
+
+        <div class="search-box">
+
+          <span>⌕</span>
+
+          <input
+            id="service-search"
+            type="search"
+            placeholder="What service do you need?"
+            autocomplete="off">
+
+          <button
+            type="button"
+            id="clear-service-search"
+            aria-label="Clear search">
+            ×
+          </button>
+
+        </div>
+
+
+        <!-- POPULAR SERVICES -->
+
+        <div class="section-heading">
+          <h2>Popular Services</h2>
+          <button type="button" class="small-link">
+            Explore nearby
+          </button>
+        </div>
+
+
+        <div id="service-grid" class="service-grid">
+
+          <button class="service-card" data-service="Electrician">
+            <span class="service-icon">ϟ</span>
+            <strong>Electrician</strong>
+          </button>
+
+          <button class="service-card" data-service="Plumber">
+            <span class="service-icon">⌁</span>
+            <strong>Plumber</strong>
+          </button>
+
+          <button class="service-card" data-service="AC Repair">
+            <span class="service-icon">❄</span>
+            <strong>AC Repair</strong>
+          </button>
+
+          <button class="service-card" data-service="Cleaning">
+            <span class="service-icon">✦</span>
+            <strong>Cleaning</strong>
+          </button>
+
+          <button class="service-card" data-service="Carpenter">
+            <span class="service-icon">⌁</span>
+            <strong>Carpenter</strong>
+          </button>
+
+          <button class="service-card" data-service="Appliance Repair">
+            <span class="service-icon">▣</span>
+            <strong>Appliance Repair</strong>
+          </button>
+
+          <button class="service-card" data-service="Mobile Repair">
+            <span class="service-icon">▯</span>
+            <strong>Mobile Repair</strong>
+          </button>
+
+          <button class="service-card" data-service="Vehicle Service">
+            <span class="service-icon">▰</span>
+            <strong>Vehicle Service</strong>
+          </button>
+
+        </div>
+
+
+        <!-- INFORMATION CARD -->
+
+        <div class="feature-card">
+
+          <span class="feature-eyebrow">
+            SERVICEGO
+          </span>
+
+          <h2>
+            Find the right hands<br>
+            <strong>for your next job.</strong>
+          </h2>
+
+          <p>
+            Browse available professionals and choose
+            the service that fits your requirement.
+          </p>
+
+        </div>
+
+
+        <!-- PROVIDER LIST PLACEHOLDER -->
+
+        <div class="section-heading provider-heading">
+
+          <div>
+            <span class="eyebrow">AVAILABLE NEAR YOU</span>
+            <h2>Professionals</h2>
+          </div>
+
+          <span class="demo-label">
+            DEMO
+          </span>
+
+        </div>
+
+
+        <div id="provider-list" class="provider-list">
+          <!-- Provider cards will be created by JavaScript -->
+        </div>
+
+      </main>
+
+
+      <!-- CUSTOMER BOTTOM NAVIGATION -->
+
+      <nav class="bottom-nav">
+
+        <button
+          type="button"
+          class="nav-item active"
+          data-nav="customer-home">
+          <span>⌂</span>
+          <strong>Home</strong>
+        </button>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-nav="customer-bookings">
+          <span>▣</span>
+          <strong>Bookings</strong>
+        </button>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-nav="customer-help">
+          <span>✦</span>
+          <strong>Help</strong>
+        </button>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-nav="customer-profile">
+          <span>◯</span>
+          <strong>Profile</strong>
+        </button>
+
+      </nav>
+
+    </section>
+
+
+    <!-- =========================
+         FUTURE SCREENS
+         PART 2+ WILL CONTINUE
+         DIRECTLY BELOW THIS LINE
+    ========================== -->
+    <style>
+
+/* =========================================================
+   SERVICEGO — PART 2
+   PREMIUM VISUAL DESIGN / RESPONSIVE CSS
+   Paste directly below PART 1.
+========================================================= */
+
+:root {
+  --sg-primary: #176b4d;
+  --sg-primary-dark: #0f513a;
+  --sg-primary-soft: #eaf5f0;
+  --sg-accent: #d6a84f;
+  --sg-bg: #f7f9f8;
+  --sg-card: #ffffff;
+  --sg-text: #17231f;
+  --sg-muted: #718078;
+  --sg-border: #e4ebe7;
+  --sg-danger: #c84d4d;
+  --sg-shadow: 0 12px 35px rgba(23, 43, 35, 0.08);
+  --sg-radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--sg-bg);
+  color: var(--sg-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid rgba(23, 107, 77, 0.18);
+  outline-offset: 2px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.screen {
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+/* =========================================================
+   LOADING SCREEN
+========================================================= */
+
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background:
+    radial-gradient(circle at top right, rgba(214,168,79,0.10), transparent 35%),
+    linear-gradient(145deg, #f8fbf9, #eef5f1);
+}
+
+.loading-brand {
+  width: min(100%, 360px);
+  text-align: center;
+}
+
+.brand-mark {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 23px;
+  color: #fff;
+  background: linear-gradient(145deg, var(--sg-primary), var(--sg-primary-dark));
+  box-shadow: 0 16px 35px rgba(23, 107, 77, 0.22);
+  font-family: "Manrope", sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.brand-name {
+  font-family: "Manrope", sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.loading-brand p {
+  margin-top: 12px;
+  color: var(--sg-muted);
+  font-size: 14px;
+}
+
+.loading-line {
+  height: 4px;
+  width: 120px;
+  margin: 20px auto 0;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #dce8e2;
+}
+
+.loading-line span {
+  display: block;
+  width: 45%;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--sg-primary);
+  animation: sgLoading 1.25s infinite ease-in-out;
+}
+
+@keyframes sgLoading {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(270%);
+  }
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.brand-mark.small {
+  width: 43px;
+  height: 43px;
+  margin: 0;
+  border-radius: 14px;
+  font-size: 19px;
+}
+
+.brand-mark.tiny {
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+.brand-title,
+.mini-brand strong {
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+}
+
+.brand-title {
+  font-size: 17px;
+  line-height: 1.1;
+}
+
+.brand-subtitle {
+  margin-top: 3px;
+  color: var(--sg-muted);
+  font-size: 11px;
+}
+
+.mini-brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+
+/* =========================================================
+   WELCOME SCREEN
+========================================================= */
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(214,168,79,0.10), transparent 30%),
+    var(--sg-bg);
+}
+
+.welcome-header {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+  padding: 24px 24px 10px;
+}
+
+.welcome-content {
+  width: min(100%, 650px);
+  margin: auto;
+  padding: 35px 24px;
+}
+
+.welcome-copy {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  display: inline-block;
+  color: var(--sg-primary);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.welcome-copy h1,
+.auth-content h1,
+.provider-intro-content h1,
+.home-heading h1 {
+  margin-top: 10px;
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(35px, 7vw, 52px);
+  line-height: 1.08;
+  letter-spacing: -1.8px;
+}
+
+.welcome-copy h1 strong,
+.auth-content h1 strong,
+.provider-intro-content h1 strong,
+.home-heading h1 strong {
+  color: var(--sg-primary);
+}
+
+.welcome-copy p {
+  max-width: 570px;
+  margin-top: 17px;
+  color: var(--sg-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.section-label {
+  margin-bottom: 12px;
+  color: var(--sg-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   ROLE CARDS
+========================================================= */
+
+.role-section {
+  display: grid;
+  gap: 12px;
+}
+
+.role-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px;
+  text-align: left;
+  border: 1px solid var(--sg-border);
+  border-radius: var(--sg-radius);
+  background: var(--sg-card);
+  box-shadow: 0 5px 18px rgba(23, 43, 35, 0.035);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23,107,77,.25);
+  box-shadow: var(--sg-shadow);
+}
+
+.role-icon {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.customer-icon {
+  color: var(--sg-primary);
+  background: var(--sg-primary-soft);
+}
+
+.provider-icon {
+  color: #8a671f;
+  background: #fbf4e3;
+}
+
+.role-text {
+  flex: 1;
+}
+
+.role-text strong {
+  display: block;
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.role-text span {
+  display: block;
+  margin-top: 4px;
+  color: var(--sg-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.role-arrow {
+  color: var(--sg-primary);
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.trust-strip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 14px;
+  border: 1px solid #e2ebe6;
+  border-radius: 16px;
+  background: #f0f7f3;
+}
+
+.trust-icon {
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--sg-primary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.trust-strip strong {
+  display: block;
+  font-size: 12px;
+}
+
+.trust-strip span {
+  display: block;
+  margin-top: 3px;
+  color: var(--sg-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.welcome-footer {
+  padding: 18px 24px 28px;
+  text-align: center;
+  color: var(--sg-muted);
+  font-size: 12px;
+}
+
+.welcome-footer button,
+.text-button,
+.small-link {
+  color: var(--sg-primary);
+  background: transparent;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   AUTH SCREENS
+========================================================= */
+
+.auth-screen,
+.provider-intro {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(214,168,79,0.08), transparent 30%),
+    var(--sg-bg);
+}
+
+.auth-top {
+  width: min(100%, 650px);
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-button {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: var(--sg-text);
+  background: #fff;
+  border: 1px solid var(--sg-border);
+  box-shadow: 0 5px 16px rgba(23,43,35,.04);
+  font-size: 20px;
+}
+
+.auth-content,
+.provider-intro-content {
+  width: min(100%, 650px);
+  margin: 0 auto;
+  padding: 35px 24px;
+}
+
+.auth-description,
+.provider-intro-content > p {
+  margin-top: 15px;
+  color: var(--sg-muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.auth-card {
+  margin-top: 28px;
+  padding: 22px;
+  border: 1px solid var(--sg-border);
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: var(--sg-shadow);
+}
+
+.auth-card label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.phone-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--sg-border);
+  border-radius: 15px;
+  overflow: hidden;
+  background: #fbfcfc;
+}
+
+.country-code {
+  padding-left: 14px;
+  color: var(--sg-muted);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.phone-field input {
+  width: 100%;
+  padding: 14px 12px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--sg-text);
+}
+
+.primary-button,
+.secondary-button {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  border-radius: 15px;
+  font-weight: 800;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.primary-button {
+  color: #fff;
+  background: linear-gradient(135deg, var(--sg-primary), var(--sg-primary-dark));
+  box-shadow: 0 10px 24px rgba(23,107,77,.18);
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(23,107,77,.23);
+}
+
+.secondary-button {
+  color: var(--sg-text);
+  background: #fff;
+  border: 1px solid var(--sg-border);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: #9aa69f;
+  font-size: 11px;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--sg-border);
+}
+
+.google-symbol {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.login-note {
+  margin-top: 15px;
+  color: #8a958f;
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.auth-footer {
+  width: min(100%, 650px);
+  margin: auto auto 0;
+  padding: 20px 24px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #9aa69f;
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   PROVIDER INTRO
+========================================================= */
+
+.provider-intro-content {
+  padding-top: 30px;
+}
+
+.provider-benefits {
+  display: grid;
+  gap: 11px;
+  margin-top: 25px;
+}
+
+.benefit-card {
+  display: flex;
+  gap: 13px;
+  padding: 15px;
+  border: 1px solid var(--sg-border);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.benefit-icon {
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: var(--sg-primary);
+  background: var(--sg-primary-soft);
+  font-weight: 800;
+}
+
+.benefit-card strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.benefit-card span {
+  display: block;
+  margin-top: 3px;
+  color: var(--sg-muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.provider-start-button {
+  margin-top: 24px;
+}
+
+.provider-note {
+  text-align: center;
+  margin-top: 12px !important;
+  font-size: 10px !important;
+}
+
+
+/* =========================================================
+   CUSTOMER HOME
+========================================================= */
+
+.app-screen {
+  padding-bottom: 80px;
+}
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px;
+  background: rgba(247,249,248,.94);
+  border-bottom: 1px solid rgba(228,235,231,.75);
+  backdrop-filter: blur(12px);
+}
+
+.header-actions {
+  display: flex;
+  gap: 7px;
+}
+
+.icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  color: var(--sg-text);
+  background: #fff;
+  border: 1px solid var(--sg-border);
+  font-size: 17px;
+}
+
+.home-content {
+  width: min(100%, 1080px);
+  margin: 0 auto;
+  padding: 20px 18px 35px;
+}
+
+.location-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sg-muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.home-heading {
+  margin-top: 27px;
+}
+
+.home-heading h1 {
+  font-size: clamp(32px, 7vw, 48px);
+}
+
+.home-heading p {
+  max-width: 550px;
+  margin-top: 12px;
+  color: var(--sg-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 22px;
+  padding: 0 14px;
+  min-height: 52px;
+  border: 1px solid var(--sg-border);
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 7px 22px rgba(23,43,35,.045);
+}
+
+.search-box > span {
+  color: var(--sg-muted);
+  font-size: 20px;
+}
+
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--sg-text);
+  font-size: 13px;
+}
+
+.search-box button {
+  color: var(--sg-muted);
+  background: transparent;
+  font-size: 19px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 27px;
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.service-card {
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 7px;
+  border: 1px solid var(--sg-border);
+  border-radius: 18px;
+  background: #fff;
+  color: var(--sg-text);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sg-shadow);
+}
+
+.service-icon {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: var(--sg-primary);
+  background: var(--sg-primary-soft);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.service-card strong {
+  font-size: 10px;
+  text-align: center;
+}
+
+.feature-card {
+  margin-top: 22px;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: 24px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(214,168,79,.20), transparent 28%),
+    linear-gradient(140deg, #176b4d, #0f513a);
+  box-shadow: 0 15px 35px rgba(23,107,77,.16);
+}
+
+.feature-eyebrow {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  opacity: .75;
+}
+
+.feature-card h2 {
+  margin-top: 9px;
+  font-family: "Manrope", sans-serif;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.feature-card p {
+  max-width: 500px;
+  margin-top: 10px;
+  color: rgba(255,255,255,.75);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.demo-label {
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: #8a671f;
+  background: #fbf4e3;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.provider-list {
+  display: grid;
+  gap: 11px;
+}
+
+.provider-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--sg-border);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.provider-avatar {
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: var(--sg-primary);
+  background: var(--sg-primary-soft);
+  font-weight: 800;
+}
+
+.provider-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.provider-info strong {
+  display: block;
+  font-size: 13px;
+}
+
+.provider-info span {
+  display: block;
+  margin-top: 3px;
+  color: var(--sg-muted);
+  font-size: 10px;
+}
+
+.provider-rating {
+  color: #8a671f;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+========================================================= */
+
+.bottom-nav {
+  position: fixed;
+  z-index: 50;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: min(calc(100% - 24px), 560px);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 7px;
+  border: 1px solid rgba(228,235,231,.95);
+  border-radius: 22px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 15px 35px rgba(23,43,35,.13);
+  backdrop-filter: blur(14px);
+}
+
+.nav-item {
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border-radius: 16px;
+  color: #84918a;
+  background: transparent;
+  font-size: 17px;
+}
+
+.nav-item strong {
+  font-size: 9px;
+}
+
+.nav-item.active {
+  color: var(--sg-primary);
+  background: var(--sg-primary-soft);
+}
+
+
+/* =========================================================
+   TABLET / DESKTOP
+========================================================= */
+
+@media (min-width: 700px) {
+
+  .welcome-content,
+  .auth-content,
+  .provider-intro-content {
+    padding-top: 60px;
+    padding-bottom: 50px;
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .provider-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .welcome-header,
+  .auth-top {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+}
+
+@media (max-width: 420px) {
+
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .welcome-copy h1,
+  .auth-content h1,
+  .provider-intro-content h1 {
+    font-size: 35px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+}
+
+</style>
+<script>
+
+/* =========================================================
+   SERVICEGO — PART 3
+   CORE NAVIGATION + BASIC DEMO LOGIC
+   Paste directly below PART 2.
+========================================================= */
+
+(function () {
+
+  "use strict";
+
+
+  /* =======================================================
+     BASIC APP STATE
+  ======================================================= */
+
+  const appState = {
+    currentScreen: "loading-screen",
+    selectedRole: null,
+    selectedService: null,
+    customerMobile: "",
+    providerRegistrationStarted: false
+  };
+
+
+  /* =======================================================
+     SCREEN HELPER
+  ======================================================= */
+
+  function showScreen(screenId) {
+
+    const screens = document.querySelectorAll(".screen");
+
+    screens.forEach(function (screen) {
+      screen.classList.add("hidden");
+    });
+
+    const target = document.getElementById(screenId);
+
+    if (target) {
+      target.classList.remove("hidden");
+      appState.currentScreen = screenId;
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  }
+
+
+  /* =======================================================
+     SAFE BUTTON CLICK HELPER
+  ======================================================= */
+
+  function onClick(id, callback) {
+
+    const element = document.getElementById(id);
+
+    if (!element) {
+      return;
+    }
+
+    element.addEventListener("click", callback);
+  }
+
+
+  /* =======================================================
+     LOADING → WELCOME
+  ======================================================= */
+
+  window.addEventListener("load", function () {
+
+    setTimeout(function () {
+      showScreen("welcome-screen");
+    }, 900);
+
+  });
+
+
+  /* =======================================================
+     ROLE SELECTION
+  ======================================================= */
+
+  const roleButtons = document.querySelectorAll("[data-role]");
+
+  roleButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const role = button.getAttribute("data-role");
+
+      appState.selectedRole = role;
+
+      if (role === "customer") {
+
+        showScreen("customer-login-screen");
+
+      }
+
+      if (role === "provider") {
+
+        showScreen("provider-intro-screen");
+
+      }
+
+    });
+
+  });
+
+
+  /* =======================================================
+     BACK BUTTONS
+  ======================================================= */
+
+  const backButtons = document.querySelectorAll("[data-back]");
+
+  backButtons.forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+      const targetScreen = button.getAttribute("data-back");
+
+      if (targetScreen) {
+        showScreen(targetScreen);
+      }
+
+    });
+
+  });
+
+
+  /* =======================================================
+     CUSTOMER MOBILE CONTINUE
+  ======================================================= */
+
+  onClick("customer-continue", function () {
+
+    const input = document.getElementById("customer-mobile");
+
+    if (!input) {
+      return;
+    }
+
+    const mobile = input.value.trim();
+
+    if (!/^[0-9]{10}$/.test(mobile)) {
+
+      showMessage(
+        "Please enter a valid 10-digit mobile number."
+      );
+
+      input.focus();
+
+      return;
+    }
+
+    appState.customerMobile = mobile;
+
+    showScreen("customer-home-screen");
+
+    showMessage(
+      "Welcome to ServiceGo."
+    );
+
+  });
+
+
+  /* =======================================================
+     GOOGLE DEMO BUTTON
+  ======================================================= */
+
+  onClick("google-customer", function () {
+
+    showMessage(
+      "Google sign-in will be connected in the secure account setup stage."
+    );
+
+  });
+
+
+  /* =======================================================
+     EXISTING ACCOUNT BUTTON
+  ======================================================= */
+
+  onClick("existing-account-btn", function () {
+
+    showScreen("customer-login-screen");
+
+  });
+
+
+  /* =======================================================
+     PROVIDER REGISTRATION START
+  ======================================================= */
+
+  onClick("provider-start", function () {
+
+    appState.providerRegistrationStarted = true;
+
+    showMessage(
+      "Provider verification setup will continue in the next stage."
+    );
+
+  });
+
+
+  /* =======================================================
+     SEARCH
+  ======================================================= */
+
+  const searchInput = document.getElementById("service-search");
+
+  if (searchInput) {
+
+    searchInput.addEventListener("input", function () {
+
+      const searchText = searchInput.value
+        .trim()
+        .toLowerCase();
+
+      const serviceCards =
+        document.querySelectorAll(".service-card");
+
+      serviceCards.forEach(function (card) {
+
+        const serviceName =
+          (card.getAttribute("data-service") || "")
+          .toLowerCase();
+
+        if (
+          searchText === "" ||
+          serviceName.includes(searchText)
+        ) {
+
+          card.style.display = "";
+
+        } else {
+
+          card.style.display = "none";
+
+        }
+
+      });
+
+    });
+
+  }
+
+
+  /* =======================================================
+     CLEAR SEARCH
+  ======================================================= */
+
+  onClick("clear-service-search", function () {
+
+    if (!searchInput) {
+      return;
+    }
+
+    searchInput.value = "";
+
+    const serviceCards =
+      document.querySelectorAll(".service-card");
+
+    serviceCards.forEach(function (card) {
+      card.style.display = "";
+    });
+
+    searchInput.focus();
+
+  });
+
+
+  /* =======================================================
+     SERVICE SELECTION
+  ======================================================= */
+
+  const serviceCards =
+    document.querySelectorAll(".service-card");
+
+  serviceCards.forEach(function (card) {
+
+    card.addEventListener("click", function () {
+
+      const service =
+        card.getAttribute("data-service");
+
+      appState.selectedService = service;
+
+      showMessage(
+        service + " selected. Service booking flow will open in the next stage."
+      );
+
+    });
+
+  });
+
+
+  /* =======================================================
+     DEMO PROVIDERS
+  ======================================================= */
+
+  const demoProviders = [
+
+    {
+      name: "Aarav Electrical Services",
+      service: "Electrician",
+      rating: "4.8",
+      jobs: "126 jobs",
+      status: "Available"
+    },
+
+    {
+      name: "Raj Home Repair",
+      service: "Plumber",
+      rating: "4.7",
+      jobs: "94 jobs",
+      status: "Available"
+    },
+
+    {
+      name: "CoolCare Services",
+      service: "AC Repair",
+      rating: "4.9",
+      jobs: "181 jobs",
+      status: "Available"
+    },
+
+    {
+      name: "QuickFix Appliance Care",
+      service: "Appliance Repair",
+      rating: "4.6",
+      jobs: "73 jobs",
+      status: "Available"
+    }
+
+  ];
+
+
+  /* =======================================================
+     RENDER PROVIDERS
+  ======================================================= */
+
+  function renderProviders(list) {
+
+    const providerList =
+      document.getElementById("provider-list");
+
+    if (!providerList) {
+      return;
+    }
+
+    providerList.innerHTML = "";
+
+    if (!list.length) {
+
+      providerList.innerHTML = `
+        <div class="provider-card">
+          <div class="provider-avatar">?</div>
+          <div class="provider-info">
+            <strong>No providers found</strong>
+            <span>Try another service.</span>
+          </div>
+        </div>
+      `;
+
+      return;
+    }
+
+
+    list.forEach(function (provider) {
+
+      const firstLetter =
+        provider.name.charAt(0).toUpperCase();
+
+
+      const card =
+        document.createElement("div");
+
+      card.className = "provider-card";
+
+      card.innerHTML = `
+        <div class="provider-avatar">
+          ${firstLetter}
+        </div>
+
+        <div class="provider-info">
+          <strong>${escapeHTML(provider.name)}</strong>
+          <span>
+            ${escapeHTML(provider.service)}
+            • ${escapeHTML(provider.jobs)}
+            • ${escapeHTML(provider.status)}
+          </span>
+        </div>
+
+        <div class="provider-rating">
+          ★ ${escapeHTML(provider.rating)}
+        </div>
+      `;
+
+      providerList.appendChild(card);
+
+    });
+
+  }
+
+
+  /* =======================================================
+     INITIAL PROVIDER DISPLAY
+  ======================================================= */
+
+  renderProviders(demoProviders);
+
+
+  /* =======================================================
+     NAVIGATION BUTTONS
+  ======================================================= */
+
+  const navItems =
+    document.querySelectorAll("[data-nav]");
+
+  navItems.forEach(function (item) {
+
+    item.addEventListener("click", function () {
+
+      const destination =
+        item.getAttribute("data-nav");
+
+      navItems.forEach(function (nav) {
+        nav.classList.remove("active");
+      });
+
+      item.classList.add("active");
+
+
+      if (destination === "customer-home") {
+
+        showScreen("customer-home-screen");
+
+      }
+
+      if (destination === "customer-bookings") {
+
+        showMessage(
+          "Your bookings section will be available in the next stage."
+        );
+
+      }
+
+      if (destination === "customer-help") {
+
+        showMessage(
+          "ServiceGo Help Center will be added in the next stage."
+        );
+
+      }
+
+      if (destination === "customer-profile") {
+
+        showMessage(
+          "Your profile section will be added in the next stage."
+        );
+
+      }
+
+    });
+
+  });
+
+
+  /* =======================================================
+     HEADER BUTTONS
+  ======================================================= */
+
+  onClick("customer-notification-btn", function () {
+
+    showMessage(
+      "No new notifications."
+    );
+
+  });
+
+
+  onClick("customer-profile-btn", function () {
+
+    showMessage(
+      "Profile management will be available in the account stage."
+    );
+
+  });
+
+
+  /* =======================================================
+     GENERIC MESSAGE
+  ======================================================= */
+
+  function showMessage(message) {
+
+    let box =
+      document.getElementById("servicego-message");
+
+    if (!box) {
+
+      box = document.createElement("div");
+
+      box.id = "servicego-message";
+
+      box.style.position = "fixed";
+      box.style.left = "50%";
+      box.style.bottom = "92px";
+      box.style.transform = "translateX(-50%) translateY(20px)";
+      box.style.width = "min(calc(100% - 32px), 420px)";
+      box.style.padding = "13px 16px";
+      box.style.borderRadius = "15px";
+      box.style.background = "#17231f";
+      box.style.color = "#ffffff";
+      box.style.fontSize = "12px";
+      box.style.lineHeight = "1.45";
+      box.style.textAlign = "center";
+      box.style.boxShadow = "0 12px 30px rgba(0,0,0,.16)";
+      box.style.zIndex = "9999";
+      box.style.opacity = "0";
+      box.style.transition =
+        "opacity .22s ease, transform .22s ease";
+
+      document.body.appendChild(box);
+
+    }
+
+
+    box.textContent = message;
+
+    box.style.opacity = "1";
+    box.style.transform =
+      "translateX(-50%) translateY(0)";
+
+
+    clearTimeout(box._hideTimer);
+
+    box._hideTimer =
+      setTimeout(function () {
+
+        box.style.opacity = "0";
+
+        box.style.transform =
+          "translateX(-50%) translateY(20px)";
+
+      }, 2800);
+
+  }
+
+
+  /* =======================================================
+     BASIC HTML SAFETY
+  ======================================================= */
+
+  function escapeHTML(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  /* =======================================================
+     GLOBAL DEBUG STATE
+     Useful during development only.
+  ======================================================= */
+
+  window.ServiceGo = {
+    state: appState,
+    providers: demoProviders
+  };
+
+
+})();
+
+</script>
+<!-- =========================================================
+     SERVICEGO — PART 4
+     CUSTOMER SERVICE REQUEST / BOOKING FLOW
+     Paste directly below PART 3.
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   SERVICE REQUEST OVERLAY
+========================================================= */
+
+.sg-request-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(15, 31, 24, 0.48);
+  backdrop-filter: blur(5px);
+}
+
+.sg-request-overlay.active {
+  display: flex;
+}
+
+.sg-request-sheet {
+  width: min(100%, 620px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 22px;
+  border-radius: 28px 28px 22px 22px;
+  background: #ffffff;
+  box-shadow: 0 -15px 45px rgba(0, 0, 0, 0.18);
+  animation: sgSheetIn .25s ease;
+}
+
+@keyframes sgSheetIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sg-sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sg-sheet-title {
+  font-family: "Manrope", sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.sg-sheet-subtitle {
+  margin-top: 4px;
+  color: #78847e;
+  font-size: 11px;
+}
+
+.sg-close-request {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 13px;
+  color: #58645e;
+  background: #f3f6f4;
+  font-size: 20px;
+}
+
+.sg-request-service {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 20px;
+  padding: 13px;
+  border: 1px solid #e4ebe7;
+  border-radius: 16px;
+  background: #f8faf9;
+}
+
+.sg-request-service-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  color: #176b4d;
+  background: #eaf5f0;
+  font-weight: 800;
+}
+
+.sg-request-service strong {
+  display: block;
+  font-size: 13px;
+}
+
+.sg-request-service span {
+  display: block;
+  margin-top: 3px;
+  color: #7a867f;
+  font-size: 10px;
+}
+
+.sg-field {
+  margin-top: 17px;
+}
+
+.sg-field label {
+  display: block;
+  margin-bottom: 7px;
+  color: #34413b;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.sg-field input,
+.sg-field textarea,
+.sg-field select {
+  width: 100%;
+  border: 1px solid #e1e9e4;
+  border-radius: 14px;
+  outline: none;
+  padding: 13px;
+  color: #17231f;
+  background: #fbfcfc;
+  font-size: 12px;
+}
+
+.sg-field textarea {
+  min-height: 88px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.sg-field input:focus,
+.sg-field textarea:focus,
+.sg-field select:focus {
+  border-color: rgba(23, 107, 77, .45);
+  box-shadow: 0 0 0 3px rgba(23, 107, 77, .08);
+}
+
+.sg-location-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.sg-location-button {
+  min-width: 92px;
+  padding: 0 12px;
+  border-radius: 14px;
+  color: #176b4d;
+  background: #eaf5f0;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sg-time-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.sg-time-option {
+  padding: 13px;
+  border: 1px solid #e1e9e4;
+  border-radius: 14px;
+  color: #334039;
+  background: #fff;
+  text-align: left;
+}
+
+.sg-time-option strong {
+  display: block;
+  font-size: 11px;
+}
+
+.sg-time-option span {
+  display: block;
+  margin-top: 3px;
+  color: #89938e;
+  font-size: 9px;
+}
+
+.sg-time-option.selected {
+  border-color: #176b4d;
+  background: #eaf5f0;
+}
+
+.sg-request-note {
+  margin-top: 13px;
+  padding: 11px 12px;
+  border-radius: 13px;
+  color: #6e776f;
+  background: #f7f8f7;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.sg-submit-request {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 18px;
+  border-radius: 15px;
+  color: #fff;
+  background: linear-gradient(135deg, #176b4d, #0f513a);
+  box-shadow: 0 10px 24px rgba(23, 107, 77, .18);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   REQUEST SUCCESS CARD
+========================================================= */
+
+.sg-success-card {
+  text-align: center;
+  padding: 22px 10px 10px;
+}
+
+.sg-success-icon {
+  width: 66px;
+  height: 66px;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  color: #fff;
+  background: #176b4d;
+  box-shadow: 0 13px 28px rgba(23, 107, 77, .20);
+  font-size: 26px;
+  font-weight: 800;
+}
+
+.sg-success-card h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 23px;
+}
+
+.sg-success-card p {
+  margin-top: 8px;
+  color: #77827c;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.sg-success-details {
+  margin-top: 18px;
+  padding: 14px;
+  border: 1px solid #e4ebe7;
+  border-radius: 16px;
+  background: #f8faf9;
+  text-align: left;
+}
+
+.sg-success-details div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 7px 0;
+  font-size: 10px;
+}
+
+.sg-success-details div + div {
+  border-top: 1px solid #e8eeea;
+}
+
+.sg-success-details span {
+  color: #7c8881;
+}
+
+.sg-success-details strong {
+  text-align: right;
+}
+
+.sg-success-close {
+  width: 100%;
+  min-height: 47px;
+  margin-top: 17px;
+  border-radius: 14px;
+  color: #fff;
+  background: #176b4d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .sg-request-sheet {
+    padding: 18px;
+  }
+
+  .sg-time-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     CUSTOMER SERVICE REQUEST OVERLAY
+========================================================= -->
+
+<div
+  id="service-request-overlay"
+  class="sg-request-overlay"
+  aria-hidden="true">
+
+  <div
+    class="sg-request-sheet"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="request-title">
+
+
+    <div class="sg-sheet-head">
+
+      <div>
+        <div id="request-title" class="sg-sheet-title">
+          Request a Service
+        </div>
+
+        <div class="sg-sheet-subtitle">
+          Tell us what you need and we'll continue from there.
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="close-service-request"
+        class="sg-close-request"
+        aria-label="Close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="sg-request-service">
+
+      <div
+        id="request-service-icon"
+        class="sg-request-service-icon">
+        ✓
+      </div>
+
+      <div>
+        <strong id="request-service-name">
+          Service
+        </strong>
+
+        <span>
+          Service request
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="sg-field">
+
+      <label for="service-description">
+        What do you need help with?
+      </label>
+
+      <textarea
+        id="service-description"
+        placeholder="Example: My ceiling fan is not working..."></textarea>
+
+    </div>
+
+
+    <div class="sg-field">
+
+      <label for="service-location">
+        Service location
+      </label>
+
+      <div class="sg-location-row">
+
+        <input
+          id="service-location"
+          type="text"
+          placeholder="Enter your area or address">
+
+        <button
+          type="button"
+          id="use-location-button"
+          class="sg-location-button">
+          Use location
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="sg-field">
+
+      <label>
+        When do you need the service?
+      </label>
+
+      <div class="sg-time-grid">
+
+        <button
+          type="button"
+          class="sg-time-option selected"
+          data-time="As soon as possible">
+
+          <strong>As soon as possible</strong>
+          <span>Find available providers</span>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="sg-time-option"
+          data-time="Schedule later">
+
+          <strong>Schedule later</strong>
+          <span>Choose a convenient time</span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="sg-request-note">
+      Your final price, provider availability and booking
+      details will be shown before a real booking is confirmed.
+    </div>
+
+
+    <button
+      type="button"
+      id="submit-service-request"
+      class="sg-submit-request">
+      Continue Request →
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     REQUEST SUCCESS / DEMO OVERLAY
+========================================================= -->
+
+<div
+  id="request-success-overlay"
+  class="sg-request-overlay"
+  aria-hidden="true">
+
+  <div class="sg-request-sheet">
+
+    <div class="sg-success-card">
+
+      <div class="sg-success-icon">
+        ✓
+      </div>
+
+      <h2>
+        Request Created
+      </h2>
+
+      <p>
+        Your service request has been prepared successfully.
+        Provider matching and real booking confirmation will
+        be connected in the next development stages.
+      </p>
+
+
+      <div class="sg-success-details">
+
+        <div>
+          <span>Service</span>
+          <strong id="success-service">
+            —
+          </strong>
+        </div>
+
+        <div>
+          <span>Timing</span>
+          <strong id="success-time">
+            —
+          </strong>
+        </div>
+
+        <div>
+          <span>Location</span>
+          <strong id="success-location">
+            —
+          </strong>
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        id="close-success-request"
+        class="sg-success-close">
+        Back to ServiceGo
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SERVICEGO — PART 4 LOGIC
+========================================================= */
+
+(function () {
+
+  "use strict";
+
+
+  const overlay =
+    document.getElementById("service-request-overlay");
+
+  const successOverlay =
+    document.getElementById("request-success-overlay");
+
+
+  const serviceName =
+    document.getElementById("request-service-name");
+
+  const serviceIcon =
+    document.getElementById("request-service-icon");
+
+  const description =
+    document.getElementById("service-description");
+
+  const locationInput =
+    document.getElementById("service-location");
+
+  const submitButton =
+    document.getElementById("submit-service-request");
+
+
+  /* =======================================================
+     OPEN REQUEST SCREEN
+  ======================================================= */
+
+  function openRequest(service) {
+
+    if (!overlay) {
+      return;
+    }
+
+    const safeService =
+      service || "Service";
+
+    if (serviceName) {
+      serviceName.textContent = safeService;
+    }
+
+    if (serviceIcon) {
+      serviceIcon.textContent = "✓";
+    }
+
+    overlay.classList.add("active");
+    overlay.setAttribute("aria-hidden", "false");
+
+    document.body.style.overflow = "hidden";
+
+  }
+
+
+  /* =======================================================
+     CLOSE REQUEST SCREEN
+  ======================================================= */
+
+  function closeRequest() {
+
+    if (!overlay) {
+      return;
+    }
+
+    overlay.classList.remove("active");
+    overlay.setAttribute("aria-hidden", "true");
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  /* =======================================================
+     SERVICE CARDS
+  ======================================================= */
+
+  document.querySelectorAll(".service-card")
+    .forEach(function (card) {
+
+      card.addEventListener("click", function () {
+
+        const service =
+          card.getAttribute("data-service");
+
+        if (window.ServiceGo &&
+            window.ServiceGo.state) {
+
+          window.ServiceGo.state.selectedService =
+            service;
+
+        }
+
+        openRequest(service);
+
+      });
+
+    });
+
+
+  /* =======================================================
+     CLOSE BUTTON
+  ======================================================= */
+
+  const closeButton =
+    document.getElementById("close-service-request");
+
+  if (closeButton) {
+
+    closeButton.addEventListener("click", function () {
+      closeRequest();
+    });
+
+  }
+
+
+  /* =======================================================
+     CLICK OUTSIDE SHEET
+  ======================================================= */
+
+  if (overlay) {
+
+    overlay.addEventListener("click", function (event) {
+
+      if (event.target === overlay) {
+        closeRequest();
+      }
+
+    });
+
+  }
+
+
+  /* =======================================================
+     ESCAPE KEY
+  ======================================================= */
+
+  document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+
+      if (overlay &&
+          overlay.classList.contains("active")) {
+
+        closeRequest();
+
+      }
+
+      if (successOverlay &&
+          successOverlay.classList.contains("active")) {
+
+        closeSuccess();
+
+      }
+
+    }
+
+  });
+
+
+  /* =======================================================
+     TIME SELECTION
+  ======================================================= */
+
+  let selectedTime = "As soon as possible";
+
+  document.querySelectorAll(".sg-time-option")
+    .forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        document.querySelectorAll(".sg-time-option")
+          .forEach(function (item) {
+            item.classList.remove("selected");
+          });
+
+        button.classList.add("selected");
+
+        selectedTime =
+          button.getAttribute("data-time") ||
+          "As soon as possible";
+
+      });
+
+    });
+
+
+  /* =======================================================
+     LOCATION BUTTON
+  ======================================================= */
+
+  const locationButton =
+    document.getElementById("use-location-button");
+
+  if (locationButton) {
+
+    locationButton.addEventListener("click", function () {
+
+      if (!navigator.geolocation) {
+
+        showMessage(
+          "Location is not supported on this device."
+        );
+
+        return;
+
+      }
+
+
+      locationButton.textContent =
+        "Checking...";
+
+
+      navigator.geolocation.getCurrentPosition(
+
+        function () {
+
+          locationButton.textContent =
+            "Location ready";
+
+          if (locationInput &&
+              !locationInput.value.trim()) {
+
+            locationInput.value =
+              "Current location selected";
+
+          }
+
+          showMessage(
+            "Location permission received for this request."
+          );
+
+        },
+
+        function () {
+
+          locationButton.textContent =
+            "Use location";
+
+          showMessage(
+            "Location permission was not granted. You can enter your area manually."
+          );
+
+        },
+
+        {
+          enableHighAccuracy: false,
+          timeout: 8000,
+          maximumAge: 300000
+        }
+
+      );
+
+    });
+
+  }
+
+
+  /* =======================================================
+     SUBMIT REQUEST
+  ======================================================= */
+
+  if (submitButton) {
+
+    submitButton.addEventListener("click", function () {
+
+      const service =
+        serviceName
+          ? serviceName.textContent.trim()
+          : "Service";
+
+      const descriptionText =
+        description
+          ? description.value.trim()
+          : "";
+
+      const locationText =
+        locationInput
+          ? locationInput.value.trim()
+          : "";
+
+
+      if (!descriptionText) {
+
+        showMessage(
+          "Please describe what service you need."
+        );
+
+        if (description) {
+          description.focus();
+        }
+
+        return;
+
+      }
+
+
+      if (!locationText) {
+
+        showMessage(
+          "Please enter your service location."
+        );
+
+        if (locationInput) {
+          locationInput.focus();
+        }
+
+        return;
+
+      }
+
+
+      const successService =
+        document.getElementById("success-service");
+
+      const successTime =
+        document.getElementById("success-time");
+
+      const successLocation =
+        document.getElementById("success-location");
+
+
+      if (successService) {
+        successService.textContent = service;
+      }
+
+      if (successTime) {
+        successTime.textContent = selectedTime;
+      }
+
+      if (successLocation) {
+        successLocation.textContent = locationText;
+      }
+
+
+      closeRequest();
+
+
+      if (successOverlay) {
+
+        successOverlay.classList.add("active");
+
+        successOverlay.setAttribute(
+          "aria-hidden",
+          "false"
+        );
+
+        document.body.style.overflow = "hidden";
+
+      }
+
+    });
+
+  }
+
+
+  /* =======================================================
+     SUCCESS CLOSE
+  ======================================================= */
+
+  function closeSuccess() {
+
+    if (!successOverlay) {
+      return;
+    }
+
+    successOverlay.classList.remove("active");
+
+    successOverlay.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  const successClose =
+    document.getElementById("close-success-request");
+
+  if (successClose) {
+
+    successClose.addEventListener("click", function () {
+
+      closeSuccess();
+
+    });
+
+  }
+
+
+  /* =======================================================
+     SUCCESS OUTSIDE CLICK
+  ======================================================= */
+
+  if (successOverlay) {
+
+    successOverlay.addEventListener("click", function (event) {
+
+      if (event.target === successOverlay) {
+        closeSuccess();
+      }
+
+    });
+
+  }
+
+
+  /* =======================================================
+     MESSAGE HELPER
+  ======================================================= */
+
+  function showMessage(message) {
+
+    if (typeof window.ServiceGo !== "undefined" &&
+        typeof window.ServiceGo.showMessage === "function") {
+
+      window.ServiceGo.showMessage(message);
+
+      return;
+    }
+
+
+    let messageBox =
+      document.getElementById("servicego-message");
+
+    if (!messageBox) {
+
+      messageBox =
+        document.createElement("div");
+
+      messageBox.id =
+        "servicego-message";
+
+      messageBox.style.position =
+        "fixed";
+
+      messageBox.style.left =
+        "50%";
+
+      messageBox.style.bottom =
+        "92px";
+
+      messageBox.style.transform =
+        "translateX(-50%)";
+
+      messageBox.style.width =
+        "min(calc(100% - 32px), 420px)";
+
+      messageBox.style.padding =
+        "13px 16px";
+
+      messageBox.style.borderRadius =
+        "15px";
+
+      messageBox.style.background =
+        "#17231f";
+
+      messageBox.style.color =
+        "#ffffff";
+
+      messageBox.style.fontSize =
+        "12px";
+
+      messageBox.style.textAlign =
+        "center";
+
+      messageBox.style.zIndex =
+        "9999";
+
+      document.body.appendChild(
+        messageBox
+      );
+
+    }
+
+    messageBox.textContent =
+      message;
+
+    messageBox.style.display =
+      "block";
+
+
+    clearTimeout(
+      messageBox._timer
+    );
+
+
+    messageBox._timer =
+      setTimeout(function () {
+
+        messageBox.style.display =
+          "none";
+
+      }, 2800);
+
+  }
+
+})();
+
+</script>
+<!-- =========================================================
+     SERVICEGO — PART 5
+     PROVIDER DISCOVERY + PROVIDER DETAILS + BOOKING REVIEW
+     Paste directly below PART 4.
+========================================================= -->
+
+<style>
+
+/* =========================================================
+   PROVIDER DISCOVERY
+========================================================= */
+
+.sg-provider-browser {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(15, 31, 24, .48);
+  backdrop-filter: blur(5px);
+}
+
+.sg-provider-browser.active {
+  display: flex;
+}
+
+.sg-provider-sheet {
+  width: min(100%, 650px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 21px;
+  border-radius: 28px 28px 22px 22px;
+  background: #fff;
+  box-shadow: 0 -15px 45px rgba(0,0,0,.18);
+  animation: sgProviderIn .25s ease;
+}
+
+@keyframes sgProviderIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sg-provider-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sg-provider-head h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.sg-provider-head p {
+  margin-top: 4px;
+  color: #78847e;
+  font-size: 10px;
+}
+
+.sg-close-provider {
+  width: 38px;
+  height: 38px;
+  border-radius: 13px;
+  color: #58645e;
+  background: #f3f6f4;
+  font-size: 20px;
+}
+
+.sg-provider-filter {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin: 18px 0 14px;
+  padding-bottom: 2px;
+}
+
+.sg-provider-filter button {
+  flex: 0 0 auto;
+  padding: 9px 12px;
+  border: 1px solid #e2e9e5;
+  border-radius: 12px;
+  color: #647069;
+  background: #fff;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.sg-provider-filter button.active {
+  border-color: #176b4d;
+  color: #176b4d;
+  background: #eaf5f0;
+}
+
+.sg-discovery-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 14px;
+  border: 1px solid #e2e9e5;
+  border-radius: 18px;
+  background: #fff;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.sg-discovery-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 9px 25px rgba(23,43,35,.07);
+}
+
+.sg-provider-avatar {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  color: #176b4d;
+  background: #eaf5f0;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+}
+
+.sg-discovery-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sg-discovery-info strong {
+  display: block;
+  font-size: 12px;
+}
+
+.sg-discovery-info span {
+  display: block;
+  margin-top: 3px;
+  color: #7b8780;
+  font-size: 9px;
+}
+
+.sg-provider-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 4px 7px;
+  border-radius: 8px;
+  color: #176b4d;
+  background: #edf7f2;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.sg-provider-status.busy {
+  color: #946f20;
+  background: #fbf4e3;
+}
+
+.sg-provider-status.offline {
+  color: #78817d;
+  background: #f0f2f1;
+}
+
+.sg-provider-action {
+  padding: 9px 11px;
+  border-radius: 11px;
+  color: #fff;
+  background: #176b4d;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   PROVIDER PROFILE
+========================================================= */
+
+.sg-provider-profile {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(15,31,24,.50);
+  backdrop-filter: blur(5px);
+}
+
+.sg-provider-profile.active {
+  display: flex;
+}
+
+.sg-profile-sheet {
+  width: min(100%, 650px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 22px;
+  border-radius: 28px 28px 22px 22px;
+  background: #fff;
+}
+
+.sg-profile-top {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.sg-large-avatar {
+  width: 62px;
+  height: 62px;
+  flex: 0 0 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  color: #176b4d;
+  background: #eaf5f0;
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.sg-profile-name {
+  flex: 1;
+}
+
+.sg-profile-name h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.sg-profile-name p {
+  margin-top: 3px;
+  color: #78847e;
+  font-size: 10px;
+}
+
+.sg-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.sg-rating {
+  color: #8a671f;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sg-rating-count {
+  color: #87918c;
+  font-size: 9px;
+}
+
+.sg-profile-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.sg-info-box {
+  padding: 12px 8px;
+  border-radius: 14px;
+  background: #f7f9f8;
+  text-align: center;
+}
+
+.sg-info-box strong {
+  display: block;
+  color: #17231f;
+  font-size: 12px;
+}
+
+.sg-info-box span {
+  display: block;
+  margin-top: 3px;
+  color: #859089;
+  font-size: 8px;
+}
+
+.sg-profile-section {
+  margin-top: 20px;
+}
+
+.sg-profile-section h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+}
+
+.sg-profile-section p {
+  margin-top: 7px;
+  color: #76817b;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.sg-profile-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 20px;
+}
+
+.sg-call-provider,
+.sg-select-provider {
+  min-height: 46px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sg-call-provider {
+  color: #176b4d;
+  background: #eaf5f0;
+}
+
+.sg-select-provider {
+  color: #fff;
+  background: #176b4d;
+}
+
+
+/* =========================================================
+   BOOKING REVIEW
+========================================================= */
+
+.sg-booking-review {
+  position: fixed;
+  inset: 0;
+  z-index: 230;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(15,31,24,.50);
+  backdrop-filter: blur(5px);
+}
+
+.sg-booking-review.active {
+  display: flex;
+}
+
+.sg-review-sheet {
+  width: min(100%, 650px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 22px;
+  border-radius: 28px 28px 22px 22px;
+  background: #fff;
+}
+
+.sg-review-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sg-review-head h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 21px;
+}
+
+.sg-review-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 13px 0;
+  border-bottom: 1px solid #e9eeeb;
+  font-size: 10px;
+}
+
+.sg-review-row span {
+  color: #7d8982;
+}
+
+.sg-review-row strong {
+  max-width: 60%;
+  text-align: right;
+}
+
+.sg-price-box {
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 16px;
+  background: #f7f9f8;
+}
+
+.sg-price-box > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px 0;
+  font-size: 10px;
+}
+
+.sg-price-box .total {
+  margin-top: 6px;
+  padding-top: 11px;
+  border-top: 1px solid #dfe7e2;
+  color: #176b4d;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.sg-review-warning {
+  margin-top: 13px;
+  padding: 11px;
+  border-radius: 13px;
+  color: #6e776f;
+  background: #f7f8f7;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.sg-confirm-booking {
+  width: 100%;
+  min-height: 49px;
+  margin-top: 16px;
+  border-radius: 14px;
+  color: #fff;
+  background: #176b4d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .sg-provider-sheet,
+  .sg-profile-sheet,
+  .sg-review-sheet {
+    padding: 18px;
+  }
+
+  .sg-profile-info {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sg-profile-buttons {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     PROVIDER DISCOVERY
+========================================================= -->
+
+<div
+  id="sg-provider-browser"
+  class="sg-provider-browser"
+  aria-hidden="true">
+
+  <div class="sg-provider-sheet">
+
+    <div class="sg-provider-head">
+
+      <div>
+        <h2>Available Professionals</h2>
+        <p>
+          Choose a provider based on availability,
+          rating and service information.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        id="sg-close-provider-browser"
+        class="sg-close-provider">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="sg-provider-filter">
+
+      <button
+        type="button"
+        class="active"
+        data-provider-filter="all">
+        All
+      </button>
+
+      <button
+        type="button"
+        data-provider-filter="available">
+        Available
+      </button>
+
+      <button
+        type="button"
+        data-provider-filter="busy">
+        Busy
+      </button>
+
+    </div>
+
+
+    <div id="sg-provider-results"></div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     PROVIDER PROFILE
+========================================================= -->
+
+<div
+  id="sg-provider-profile"
+  class="sg-provider-profile"
+  aria-hidden="true">
+
+  <div class="sg-profile-sheet">
+
+    <div class="sg-profile-top">
+
+      <div
+        id="sg-profile-avatar"
+        class="sg-large-avatar">
+        A
+      </div>
+
+      <div class="sg-profile-name">
+
+        <h2 id="sg-profile-name">
+          Provider
+        </h2>
+
+        <p id="sg-profile-service">
+          Service Provider
+        </p>
+
+      </div>
+
+      <button
+        type="button"
+        id="sg-close-profile"
+        class="sg-close-provider">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="sg-rating-row">
+
+      <span
+        id="sg-profile-rating"
+        class="sg-rating">
+        ★ 4.8
+      </span>
+
+      <span
+        id="sg-profile-reviews"
+        class="sg-rating-count">
+        100+ customer reviews
+      </span>
+
+    </div>
+
+
+    <div class="sg-profile-info">
+
+      <div class="sg-info-box">
+        <strong id="sg-profile-jobs">100+</strong>
+        <span>Completed jobs</span>
+      </div>
+
+      <div class="sg-info-box">
+        <strong id="sg-profile-response">Fast</strong>
+        <span>Response</span>
+      </div>
+
+      <div class="sg-info-box">
+        <strong id="sg-profile-status">Available</strong>
+        <span>Status</span>
+      </div>
+
+    </div>
+
+
+    <div class="sg-profile-section">
+
+      <h3>About this provider</h3>
+
+      <p id="sg-profile-about">
+        Service information and provider details
+        will appear here.
+      </p>
+
+    </div>
+
+
+    <div class="sg-profile-buttons">
+
+      <button
+        type="button"
+        id="sg-call-provider"
+        class="sg-call-provider">
+        Call Provider
+      </button>
+
+      <button
+        type="button"
+        id="sg-select-provider"
+        class="sg-select-provider">
+        Select Provider
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     BOOKING REVIEW
+========================================================= -->
+
+<div
+  id="sg-booking-review"
+  class="sg-booking-review"
+  aria-hidden="true">
+
+  <div class="sg-review-sheet">
+
+    <div class="sg-review-head">
+
+      <h2>Review Booking</h2>
+
+      <button
+        type="button"
+        id="sg-close-review"
+        class="sg-close-provider">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="sg-review-row">
+      <span>Service</span>
+      <strong id="sg-review-service">—</strong>
+    </div>
+
+    <div class="sg-review-row">
+      <span>Provider</span>
+      <strong id="sg-review-provider">—</strong>
+    </div>
+
+    <div class="sg-review-row">
+      <span>Availability</span>
+      <strong id="sg-review-availability">—</strong>
+    </div>
+
+    <div class="sg-review-row">
+      <span>Service location</span>
+      <strong id="sg-review-location">—</strong>
+    </div>
+
+
+    <div class="sg-price-box">
+
+      <div>
+        <span>Estimated service charge</span>
+        <strong id="sg-estimated-price">₹ —</strong>
+      </div>
+
+      <div>
+        <span>Platform / booking charge</span>
+        <strong>Shown before confirmation</strong>
+      </div>
+
+      <div class="total">
+        <span>Estimated total</span>
+        <strong id="sg-total-price">₹ —</strong>
+      </div>
+
+    </div>
+
+
+    <div class="sg-review-warning">
+      This is a review stage only. No real payment or booking
+      is processed by this demo screen. Final pricing will be
+      connected to the secure booking system later.
+    </div>
+
+
+    <button
+      type="button"
+      id="sg-confirm-booking"
+      class="sg-confirm-booking">
+      Continue to Booking →
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SERVICEGO — PART 5 LOGIC
+========================================================= */
+
+(function () {
+
+  "use strict";
+
+
+  /* =======================================================
+     DEMO PROVIDER DATA
+  ======================================================= */
+
+  const providers = [
+
+    {
+      id: "sg-provider-001",
+      name: "Aarav Electrical Services",
+      service: "Electrician",
+      rating: "4.8",
+      reviews: "126 reviews",
+      jobs: "126",
+      response: "5–10 min",
+      status: "Available",
+      about: "Electrical repair and home electrical service provider."
+    },
+
+    {
+      id: "sg-provider-002",
+      name: "Raj Home Repair",
+      service: "Plumber",
+      rating: "4.7",
+      reviews: "94 reviews",
+      jobs: "94",
+      response: "10–15 min",
+      status: "Available",
+      about: "Home plumbing repair and maintenance services."
+    },
+
+    {
+      id: "sg-provider-003",
+      name: "CoolCare Services",
+      service: "AC Repair",
+      rating: "4.9",
+      reviews: "181 reviews",
+      jobs: "181",
+      response: "5–10 min",
+      status: "Busy",
+      about: "AC servicing, maintenance and repair services."
+    },
+
+    {
+      id: "sg-provider-004",
+      name: "QuickFix Appliance Care",
+      service: "Appliance Repair",
+      rating: "4.6",
+      reviews: "73 reviews",
+      jobs: "73",
+      response: "15–20 min",
+      status: "Available",
+      about: "Repair and maintenance for common home appliances."
+    }
+
+  ];
+
+
+  let selectedProvider = null;
+
+
+  /* =======================================================
+     ELEMENTS
+  ======================================================= */
+
+  const browser =
+    document.getElementById("sg-provider-browser");
+
+  const results =
+    document.getElementById("sg-provider-results");
+
+  const profile =
+    document.getElementById("sg-provider-profile");
+
+  const review =
+    document.getElementById("sg-booking-review");
+
+
+  /* =======================================================
+     CURRENT SERVICE
+  ======================================================= */
+
+  function getCurrentService() {
+
+    if (
+      window.ServiceGo &&
+      window.ServiceGo.state &&
+      window.ServiceGo.state.selectedService
+    ) {
+
+      return window.ServiceGo.state.selectedService;
+
+    }
+
+    return "Service";
+
+  }
+
+
+  /* =======================================================
+     SHOW PROVIDER BROWSER
+  ======================================================= */
+
+  function openProviderBrowser() {
+
+    if (!browser) {
+      return;
+    }
+
+    renderProviderResults("all");
+
+    browser.classList.add("active");
+
+    browser.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow = "hidden";
+
+  }
+
+
+  /* =======================================================
+     CLOSE PROVIDER BROWSER
+  ======================================================= */
+
+  function closeProviderBrowser() {
+
+    if (!browser) {
+      return;
+    }
+
+    browser.classList.remove("active");
+
+    browser.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  /* =======================================================
+     FILTER PROVIDERS
+  ======================================================= */
+
+  function renderProviderResults(filter) {
+
+    if (!results) {
+      return;
+    }
+
+    results.innerHTML = "";
+
+
+    let filtered =
+      providers.slice();
+
+
+    const service =
+      getCurrentService();
+
+
+    if (service !== "Service") {
+
+      const matching =
+        filtered.filter(function (provider) {
+
+          return provider.service === service;
+
+        });
+
+
+      if (matching.length) {
+        filtered = matching;
+      }
+
+    }
+
+
+    if (filter === "available") {
+
+      filtered =
+        filtered.filter(function (provider) {
+
+          return provider.status === "Available";
+
+        });
+
+    }
+
+
+    if (filter === "busy") {
+
+      filtered =
+        filtered.filter(function (provider) {
+
+          return provider.status === "Busy";
+
+        });
+
+    }
+
+
+    if (!filtered.length) {
+
+      results.innerHTML = `
+        <div class="sg-discovery-card">
+          <div class="sg-provider-avatar">?</div>
+          <div class="sg-discovery-info">
+            <strong>No matching providers</strong>
+            <span>Try another availability filter.</span>
+          </div>
+        </div>
+      `;
+
+      return;
+
+    }
+
+
+    filtered.forEach(function (provider) {
+
+      const card =
+        document.createElement("div");
+
+      card.className =
+        "sg-discovery-card";
+
+
+      const initial =
+        provider.name.charAt(0)
+          .toUpperCase();
+
+
+      const statusClass =
+        provider.status === "Busy"
+          ? "busy"
+          : "available";
+
+
+      card.innerHTML = `
+
+        <div class="sg-provider-avatar">
+          ${initial}
+        </div>
+
+        <div class="sg-discovery-info">
+
+          <strong>
+            ${escapeHTML(provider.name)}
+          </strong>
+
+          <span>
+            ${escapeHTML(provider.service)}
+            • ★ ${escapeHTML(provider.rating)}
+            • ${escapeHTML(provider.reviews)}
+          </span>
+
+          <span class="sg-provider-status ${statusClass}">
+            ● ${escapeHTML(provider.status)}
+          </span>
+
+        </div>
+
+        <button
+          type="button"
+          class="sg-provider-action">
+          View
+        </button>
+
+      `;
+
+
+      const action =
+        card.querySelector(".sg-provider-action");
+
+
+      if (action) {
+
+        action.addEventListener(
+          "click",
+          function () {
+
+            openProviderProfile(provider);
+
+          }
+        );
+
+      }
+
+
+      results.appendChild(card);
+
+    });
+
+  }
+
+
+  /* =======================================================
+     OPEN PROVIDER PROFILE
+  ======================================================= */
+
+  function openProviderProfile(provider) {
+
+    if (!profile || !provider) {
+      return;
+    }
+
+    selectedProvider =
+      provider;
+
+
+    setText(
+      "sg-profile-avatar",
+      provider.name.charAt(0)
+    );
+
+    setText(
+      "sg-profile-name",
+      provider.name
+    );
+
+    setText(
+      "sg-profile-service",
+      provider.service
+    );
+
+    setText(
+      "sg-profile-rating",
+      "★ " + provider.rating
+    );
+
+    setText(
+      "sg-profile-reviews",
+      provider.reviews
+    );
+
+    setText(
+      "sg-profile-jobs",
+      provider.jobs
+    );
+
+    setText(
+      "sg-profile-response",
+      provider.response
+    );
+
+    setText(
+      "sg-profile-status",
+      provider.status
+    );
+
+    setText(
+      "sg-profile-about",
+      provider.about
+    );
+
+
+    profile.classList.add("active");
+
+    profile.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+  }
+
+
+  /* =======================================================
+     CLOSE PROVIDER PROFILE
+  ======================================================= */
+
+  function closeProviderProfile() {
+
+    if (!profile) {
+      return;
+    }
+
+    profile.classList.remove("active");
+
+    profile.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  }
+
+
+  /* =======================================================
+     SELECT PROVIDER
+  ======================================================= */
+
+  const selectProvider =
+    document.getElementById("sg-select-provider");
+
+
+  if (selectProvider) {
+
+    selectProvider.addEventListener(
+      "click",
+      function () {
+
+        if (!selectedProvider) {
+          return;
+        }
+
+        closeProviderProfile();
+
+        openBookingReview(
+          selectedProvider
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CALL PROVIDER — DEMO
+  ======================================================= */
+
+  const callProvider =
+    document.getElementById("sg-call-provider");
+
+
+  if (callProvider) {
+
+    callProvider.addEventListener(
+      "click",
+      function () {
+
+        showMessage(
+          "Provider contact will be securely connected after account verification."
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     BOOKING REVIEW
+  ======================================================= */
+
+  function openBookingReview(provider) {
+
+    if (!review || !provider) {
+      return;
+    }
+
+
+    const locationInput =
+      document.getElementById(
+        "service-location"
+      );
+
+
+    setText(
+      "sg-review-service",
+      getCurrentService()
+    );
+
+    setText(
+      "sg-review-provider",
+      provider.name
+    );
+
+    setText(
+      "sg-review-availability",
+      provider.status +
+      " • " +
+      provider.response
+    );
+
+    setText(
+      "sg-review-location",
+      locationInput &&
+      locationInput.value.trim()
+        ? locationInput.value.trim()
+        : "Not provided"
+    );
+
+
+    /*
+       Demo price only.
+       Real pricing engine will be added later.
+    */
+
+    const demoPrice =
+      getDemoPrice(
+        getCurrentService()
+      );
+
+
+    setText(
+      "sg-estimated-price",
+      "₹ " + demoPrice
+    );
+
+    setText(
+      "sg-total-price",
+      "₹ " + demoPrice
+    );
+
+
+    review.classList.add("active");
+
+    review.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  /* =======================================================
+     DEMO PRICE
+  ======================================================= */
+
+  function getDemoPrice(service) {
+
+    const prices = {
+
+      "Electrician": 230,
+
+      "Plumber": 250,
+
+      "AC Repair": 399,
+
+      "Cleaning": 299,
+
+      "Carpenter": 300,
+
+      "Appliance Repair": 280,
+
+      "Mobile Repair": 200,
+
+      "Vehicle Service": 350
+
+    };
+
+
+    return prices[service] || 250;
+
+  }
+
+
+  /* =======================================================
+     CLOSE REVIEW
+  ======================================================= */
+
+  const closeReview =
+    document.getElementById(
+      "sg-close-review"
+    );
+
+
+  if (closeReview) {
+
+    closeReview.addEventListener(
+      "click",
+      function () {
+
+        if (review) {
+
+          review.classList.remove(
+            "active"
+          );
+
+          review.setAttribute(
+            "aria-hidden",
+            "true"
+          );
+
+        }
+
+        document.body.style.overflow =
+          "";
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CONFIRM BOOKING — DEMO ONLY
+  ======================================================= */
+
+  const confirmBooking =
+    document.getElementById(
+      "sg-confirm-booking"
+    );
+
+
+  if (confirmBooking) {
+
+    confirmBooking.addEventListener(
+      "click",
+      function () {
+
+        showMessage(
+          "Booking confirmation and secure payment will be connected in the next stage."
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     FILTER BUTTONS
+  ======================================================= */
+
+  document
+    .querySelectorAll(
+      "[data-provider-filter]"
+    )
+    .forEach(function (button) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          document
+            .querySelectorAll(
+              "[data-provider-filter]"
+            )
+            .forEach(function (item) {
+
+              item.classList.remove(
+                "active"
+              );
+
+            });
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          renderProviderResults(
+            button.getAttribute(
+              "data-provider-filter"
+            )
+          );
+
+        }
+      );
+
+    });
+
+
+  /* =======================================================
+     CLOSE PROVIDER BROWSER
+  ======================================================= */
+
+  const closeBrowser =
+    document.getElementById(
+      "sg-close-provider-browser"
+    );
+
+
+  if (closeBrowser) {
+
+    closeBrowser.addEventListener(
+      "click",
+      function () {
+
+        closeProviderBrowser();
+
+      }
+    );
+
+  }
+
+
+  if (browser) {
+
+    browser.addEventListener(
+      "click",
+      function (event) {
+
+        if (event.target === browser) {
+
+          closeProviderBrowser();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CLOSE PROFILE
+  ======================================================= */
+
+  const closeProfile =
+    document.getElementById(
+      "sg-close-profile"
+    );
+
+
+  if (closeProfile) {
+
+    closeProfile.addEventListener(
+      "click",
+      function () {
+
+        closeProviderProfile();
+
+      }
+    );
+
+  }
+
+
+  if (profile) {
+
+    profile.addEventListener(
+      "click",
+      function (event) {
+
+        if (event.target === profile) {
+
+          closeProviderProfile();
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     HELPERS
+  ======================================================= */
+
+  function setText(id, value) {
+
+    const element =
+      document.getElementById(id);
+
+    if (element) {
+      element.textContent =
+        value;
+    }
+
+  }
+
+
+  function escapeHTML(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  function showMessage(message) {
+
+    const box =
+      document.getElementById(
+        "servicego-message"
+      );
+
+    if (box) {
+
+      box.textContent =
+        message;
+
+      box.style.display =
+        "block";
+
+      clearTimeout(
+        box._timer
+      );
+
+      box._timer =
+        setTimeout(
+          function () {
+
+            box.style.display =
+              "none";
+
+          },
+          2800
+        );
+
+      return;
+
+    }
+
+
+    alert(message);
+
+  }
+
+
+  /* =======================================================
+     OPEN PROVIDER BROWSER AFTER SERVICE REQUEST
+  ======================================================= */
+
+  const originalSubmit =
+    document.getElementById(
+      "submit-service-request"
+    );
+
+
+  if (originalSubmit) {
+
+    originalSubmit.addEventListener(
+      "click",
+      function () {
+
+        /*
+          Part 4 handles validation and its demo success screen.
+          Provider discovery will be connected to the live
+          booking state in the next development stage.
+        */
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     PUBLIC DEVELOPMENT HELPER
+  ======================================================= */
+
+  window.ServiceGoProviders = {
+
+    open: openProviderBrowser,
+
+    close: closeProviderBrowser,
+
+    list: providers
+
+  };
+
+
+})();
+
+</script>
+<!-- =========================================================
+     SERVICEGO — PART 6
+     BOOKING REQUEST + AVAILABILITY + CANCELLATION FLOW
+     Paste directly below PART 5.
+========================================================= -->
+
+<style>
+
+.sg-booking-flow,
+.sg-cancel-flow,
+.sg-waiting-flow {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(15,31,24,.52);
+  backdrop-filter: blur(6px);
+}
+
+.sg-booking-flow.active,
+.sg-cancel-flow.active,
+.sg-waiting-flow.active {
+  display: flex;
+}
+
+.sg-flow-sheet {
+  width: min(100%, 650px);
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 22px;
+  border-radius: 28px 28px 22px 22px;
+  background: #fff;
+  box-shadow: 0 -15px 45px rgba(0,0,0,.18);
+}
+
+.sg-flow-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.sg-flow-head h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.sg-flow-head p {
+  margin-top: 5px;
+  color: #7c8781;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.sg-flow-close {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  border-radius: 13px;
+  color: #5d6963;
+  background: #f1f5f3;
+  font-size: 20px;
+}
+
+.sg-booking-provider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 19px;
+  padding: 14px;
+  border-radius: 17px;
+  background: #f6f9f7;
+}
+
+.sg-booking-avatar {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  color: #176b4d;
+  background: #e5f2ec;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+}
+
+.sg-booking-provider-info {
+  flex: 1;
+}
+
+.sg-booking-provider-info strong {
+  display: block;
+  font-size: 12px;
+}
+
+.sg-booking-provider-info span {
+  display: block;
+  margin-top: 4px;
+  color: #7b8781;
+  font-size: 9px;
+}
+
+.sg-status-pill {
+  padding: 7px 9px;
+  border-radius: 9px;
+  color: #176b4d;
+  background: #e7f4ed;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.sg-status-pill.busy {
+  color: #936e21;
+  background: #fbf3df;
+}
+
+.sg-request-box {
+  margin-top: 17px;
+  padding: 15px;
+  border: 1px solid #e4ebe7;
+  border-radius: 17px;
+}
+
+.sg-request-box h3 {
+  font-family: "Manrope", sans-serif;
+  font-size: 12px;
+}
+
+.sg-request-box p {
+  margin-top: 6px;
+  color: #7a857f;
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.sg-request-time {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #f7f9f8;
+  color: #53615a;
+  font-size: 9px;
+}
+
+.sg-request-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.sg-secondary-action,
+.sg-primary-action {
+  min-height: 47px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sg-secondary-action {
+  color: #176b4d;
+  background: #e8f3ee;
+}
+
+.sg-primary-action {
+  color: #fff;
+  background: #176b4d;
+}
+
+.sg-cancel-options {
+  display: grid;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.sg-cancel-option {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e3e9e6;
+  border-radius: 15px;
+  background: #fff;
+  text-align: left;
+}
+
+.sg-cancel-option strong {
+  display: block;
+  color: #1b2722;
+  font-size: 11px;
+}
+
+.sg-cancel-option span {
+  display: block;
+  margin-top: 4px;
+  color: #7d8782;
+  font-size: 8px;
+  line-height: 1.4;
+}
+
+.sg-cancel-option.danger {
+  border-color: #eadedb;
+}
+
+.sg-cancel-option.danger strong {
+  color: #9a493e;
+}
+
+.sg-waiting-icon {
+  width: 68px;
+  height: 68px;
+  margin: 8px auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  color: #176b4d;
+  background: #e8f3ee;
+  font-size: 27px;
+}
+
+.sg-waiting-content {
+  text-align: center;
+}
+
+.sg-waiting-content h2 {
+  font-family: "Manrope", sans-serif;
+  font-size: 20px;
+}
+
+.sg-waiting-content p {
+  margin-top: 7px;
+  color: #77827c;
+  font-size: 9px;
+  line-height: 1.55;
+}
+
+.sg-waiting-timer {
+  margin: 18px auto 0;
+  padding: 13px;
+  border-radius: 15px;
+  background: #f6f9f7;
+  color: #176b4d;
+  font-family: "Manrope", sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.sg-waiting-note {
+  margin-top: 12px;
+  padding: 11px;
+  border-radius: 12px;
+  background: #faf8f2;
+  color: #756d58;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.sg-waiting-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+  margin-top: 17px;
+}
+
+.sg-call-action,
+.sg-cancel-action {
+  min-height: 46px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sg-call-action {
+  color: #176b4d;
+  background: #e8f3ee;
+}
+
+.sg-cancel-action {
+  color: #fff;
+  background: #8e5148;
+}
+
+@media (max-width: 420px) {
+
+  .sg-flow-sheet {
+    padding: 18px;
+  }
+
+  .sg-request-actions,
+  .sg-waiting-actions {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     BOOKING REQUEST
+========================================================= -->
+
+<div
+  id="sg-booking-flow"
+  class="sg-booking-flow"
+  aria-hidden="true">
+
+  <div class="sg-flow-sheet">
+
+    <div class="sg-flow-head">
+
+      <div>
+        <h2>Send Booking Request</h2>
+        <p>
+          Review the provider availability before
+          sending your service request.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        id="sg-booking-flow-close"
+        class="sg-flow-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="sg-booking-provider">
+
+      <div
+        id="sg-request-avatar"
+        class="sg-booking-avatar">
+        A
+      </div>
+
+      <div class="sg-booking-provider-info">
+
+        <strong id="sg-request-provider">
+          Provider
+        </strong>
+
+        <span id="sg-request-service">
+          Service
+        </span>
+
+      </div>
+
+      <span
+        id="sg-request-status"
+        class="sg-status-pill">
+        Available
+      </span>
+
+    </div>
+
+
+    <div class="sg-request-box">
+
+      <h3>Booking status</h3>
+
+      <p id="sg-request-description">
+        Your request will be sent to the selected
+        service provider for confirmation.
+      </p>
+
+      <div class="sg-request-time">
+        <span>◷</span>
+        <span id="sg-request-eta">
+          Expected response: a few minutes
+        </span>
+      </div>
+
+    </div>
+
+
+    <div class="sg-request-actions">
+
+      <button
+        type="button"
+        id="sg-request-cancel"
+        class="sg-secondary-action">
+        Go Back
+      </button>
+
+      <button
+        type="button"
+        id="sg-send-request"
+        class="sg-primary-action">
+        Send Request →
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     CANCELLATION FLOW
+========================================================= -->
+
+<div
+  id="sg-cancel-flow"
+  class="sg-cancel-flow"
+  aria-hidden="true">
+
+  <div class="sg-flow-sheet">
+
+    <div class="sg-flow-head">
+
+      <div>
+        <h2>Manage Booking</h2>
+        <p>
+          If something changed, choose what you want
+          to do with the current booking.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        id="sg-cancel-flow-close"
+        class="sg-flow-close">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="sg-cancel-options">
+
+      <button
+        type="button"
+        id="sg-keep-job"
+        class="sg-cancel-option">
+
+        <strong>Keep the job</strong>
+
+        <span>
+          Continue with the current booking
+          and wait for the provider.
+        </span>
+
+      </button>
+
+
+      <button
+        type="button"
+        id="sg-contact-customer"
+        class="sg-cancel-option">
+
+        <strong>Call / contact customer</strong>
+
+        <span>
+          Talk to the customer before making
+          a cancellation decision.
+        </span>
+
+      </button>
+
+
+      <button
+        type="button"
+        id="sg-cancel-job"
+        class="sg-cancel-option danger">
+
+        <strong>Cancel the job</strong>
+
+        <span>
+          Cancellation will be recorded and
+          later rules can be applied according
+          to the booking stage.
+        </span>
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     WAITING / ACTIVE BOOKING
+========================================================= -->
+
+<div
+  id="sg-waiting-flow"
+  class="sg-waiting-flow"
+  aria-hidden="true">
+
+  <div class="sg-flow-sheet">
+
+    <div class="sg-waiting-icon">
+      ◷
+    </div>
+
+    <div class="sg-waiting-content">
+
+      <h2 id="sg-waiting-title">
+        Booking in progress
+      </h2>
+
+      <p id="sg-waiting-description">
+        Your service request has been created.
+        Please wait for the provider's response.
+      </p>
+
+      <div
+        id="sg-waiting-timer"
+        class="sg-waiting-timer">
+        00:00
+      </div>
+
+      <div class="sg-waiting-note">
+        Waiting and cancellation charges, if applicable,
+        will be calculated later by the secure booking
+        system according to the actual booking timeline.
+      </div>
+
+    </div>
+
+
+    <div class="sg-waiting-actions">
+
+      <button
+        type="button"
+        id="sg-waiting-call"
+        class="sg-call-action">
+        Contact
+      </button>
+
+      <button
+        type="button"
+        id="sg-waiting-cancel"
+        class="sg-cancel-action">
+        Cancel Booking
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   SERVICEGO — PART 6 LOGIC
+========================================================= */
+
+(function () {
+
+  "use strict";
+
+
+  let activeProvider = null;
+
+  let bookingStartedAt = null;
+
+  let timerInterval = null;
+
+
+  const bookingFlow =
+    document.getElementById(
+      "sg-booking-flow"
+    );
+
+  const cancelFlow =
+    document.getElementById(
+      "sg-cancel-flow"
+    );
+
+  const waitingFlow =
+    document.getElementById(
+      "sg-waiting-flow"
+    );
+
+
+  /* =======================================================
+     OPEN BOOKING REQUEST
+  ======================================================= */
+
+  function openBookingRequest(provider) {
+
+    if (!bookingFlow || !provider) {
+      return;
+    }
+
+    activeProvider =
+      provider;
+
+
+    setText(
+      "sg-request-avatar",
+      provider.name.charAt(0)
+    );
+
+    setText(
+      "sg-request-provider",
+      provider.name
+    );
+
+    setText(
+      "sg-request-service",
+      provider.service
+    );
+
+    setText(
+      "sg-request-status",
+      provider.status
+    );
+
+
+    const status =
+      document.getElementById(
+        "sg-request-status"
+      );
+
+
+    if (status) {
+
+      status.classList.toggle(
+        "busy",
+        provider.status === "Busy"
+      );
+
+    }
+
+
+    if (provider.status === "Busy") {
+
+      setText(
+        "sg-request-description",
+        "This provider is currently on another booking. You can send a request and discuss the expected arrival time."
+      );
+
+      setText(
+        "sg-request-eta",
+        "Provider may be available after the current job."
+      );
+
+    } else {
+
+      setText(
+        "sg-request-description",
+        "This provider is currently available. Send the request to begin the booking process."
+      );
+
+      setText(
+        "sg-request-eta",
+        "Expected response: a few minutes"
+      );
+
+    }
+
+
+    bookingFlow.classList.add(
+      "active"
+    );
+
+    bookingFlow.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow =
+      "hidden";
+
+  }
+
+
+  /* =======================================================
+     CLOSE BOOKING REQUEST
+  ======================================================= */
+
+  function closeBookingRequest() {
+
+    if (!bookingFlow) {
+      return;
+    }
+
+    bookingFlow.classList.remove(
+      "active"
+    );
+
+    bookingFlow.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  /* =======================================================
+     SEND REQUEST
+  ======================================================= */
+
+  const sendRequest =
+    document.getElementById(
+      "sg-send-request"
+    );
+
+
+  if (sendRequest) {
+
+    sendRequest.addEventListener(
+      "click",
+      function () {
+
+        if (!activeProvider) {
+          return;
+        }
+
+
+        closeBookingRequest();
+
+        startWaitingFlow(
+          activeProvider
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     START WAITING FLOW
+  ======================================================= */
+
+  function startWaitingFlow(provider) {
+
+    if (!waitingFlow) {
+      return;
+    }
+
+
+    bookingStartedAt =
+      Date.now();
+
+
+    setText(
+      "sg-waiting-title",
+      "Booking request sent"
+    );
+
+
+    setText(
+      "sg-waiting-description",
+      provider.name +
+      " has received your service request. You can contact the provider while waiting for confirmation."
+    );
+
+
+    waitingFlow.classList.add(
+      "active"
+    );
+
+    waitingFlow.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    document.body.style.overflow =
+      "hidden";
+
+
+    startTimer();
+
+  }
+
+
+  /* =======================================================
+     WAITING TIMER
+  ======================================================= */
+
+  function startTimer() {
+
+    stopTimer();
+
+
+    updateTimer();
+
+
+    timerInterval =
+      setInterval(
+        updateTimer,
+        1000
+      );
+
+  }
+
+
+  function stopTimer() {
+
+    if (timerInterval) {
+
+      clearInterval(
+        timerInterval
+      );
+
+      timerInterval =
+        null;
+
+    }
+
+  }
+
+
+  function updateTimer() {
+
+    if (!bookingStartedAt) {
+      return;
+    }
+
+
+    const seconds =
+      Math.floor(
+        (Date.now() - bookingStartedAt) /
+        1000
+      );
+
+
+    const minutes =
+      Math.floor(
+        seconds / 60
+      );
+
+
+    const remaining =
+      seconds % 60;
+
+
+    const formatted =
+      String(minutes).padStart(2, "0") +
+      ":" +
+      String(remaining).padStart(2, "0");
+
+
+    setText(
+      "sg-waiting-timer",
+      formatted
+    );
+
+  }
+
+
+  /* =======================================================
+     CLOSE WAITING FLOW
+  ======================================================= */
+
+  function closeWaitingFlow() {
+
+    if (!waitingFlow) {
+      return;
+    }
+
+    stopTimer();
+
+    waitingFlow.classList.remove(
+      "active"
+    );
+
+    waitingFlow.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.style.overflow =
+      "";
+
+  }
+
+
+  /* =======================================================
+     CANCEL BOOKING
+  ======================================================= */
+
+  const waitingCancel =
+    document.getElementById(
+      "sg-waiting-cancel"
+    );
+
+
+  if (waitingCancel) {
+
+    waitingCancel.addEventListener(
+      "click",
+      function () {
+
+        openCancellationFlow();
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CANCELLATION OPTIONS
+  ======================================================= */
+
+  function openCancellationFlow() {
+
+    if (!cancelFlow) {
+      return;
+    }
+
+    cancelFlow.classList.add(
+      "active"
+    );
+
+    cancelFlow.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+  }
+
+
+  function closeCancellationFlow() {
+
+    if (!cancelFlow) {
+      return;
+    }
+
+    cancelFlow.classList.remove(
+      "active"
+    );
+
+    cancelFlow.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  }
+
+
+  /* =======================================================
+     KEEP JOB
+  ======================================================= */
+
+  const keepJob =
+    document.getElementById(
+      "sg-keep-job"
+    );
+
+
+  if (keepJob) {
+
+    keepJob.addEventListener(
+      "click",
+      function () {
+
+        closeCancellationFlow();
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CONTACT CUSTOMER
+  ======================================================= */
+
+  const contactCustomer =
+    document.getElementById(
+      "sg-contact-customer"
+    );
+
+
+  if (contactCustomer) {
+
+    contactCustomer.addEventListener(
+      "click",
+      function () {
+
+        closeCancellationFlow();
+
+
+        showPart6Message(
+          "Customer contact will be connected through the secure booking system."
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CANCEL JOB
+  ======================================================= */
+
+  const cancelJob =
+    document.getElementById(
+      "sg-cancel-job"
+    );
+
+
+  if (cancelJob) {
+
+    cancelJob.addEventListener(
+      "click",
+      function () {
+
+        closeCancellationFlow();
+
+        closeWaitingFlow();
+
+
+        showPart6Message(
+          "Cancellation recorded for this demo booking."
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CONTACT FROM WAITING SCREEN
+  ======================================================= */
+
+  const waitingCall =
+    document.getElementById(
+      "sg-waiting-call"
+    );
+
+
+  if (waitingCall) {
+
+    waitingCall.addEventListener(
+      "click",
+      function () {
+
+        showPart6Message(
+          "Secure customer-provider contact will be connected after verification."
+        );
+
+      }
+    );
+
+  }
+
+
+  /* =======================================================
+     CLOSE BUTTONS
+  ======================================================= */
+
+  const bookingClose =
+    document.getElementById(
+      "sg-booking-flow-close"
+    );
+
+
+  if (bookingClose) {
+
+    bookingClose.addEventListener(
+      "click",
+      closeBookingRequest
+    );
+
+  }
+
+
+  const cancelClose =
+    document.getElementById(
+      "sg-cancel-flow-close"
+    );
+
+
+  if (cancelClose) {
+
+    cancelClose.addEventListener(
+      "click",
+      closeCancellationFlow
+    );
+
+  }
+
+
+  /* =======================================================
+     PUBLIC API
+  ======================================================= */
+
+  window.ServiceGoBooking = {
+
+    openRequest:
+      openBookingRequest,
+
+    openCancellation:
+      openCancellationFlow,
+
+    closeWaiting:
+      closeWaitingFlow
+
+  };
+
+
+  /* =======================================================
+     HELPER
+  ======================================================= */
+
+  function setText(
+    id,
+    value
+  ) {
+
+    const element =
+      document.getElementById(id);
+
+    if (element) {
+
+      element.textContent =
+        value;
+
+    }
+
+  }
+
+
+  function showPart6Message(
+    message
+  ) {
+
+    const box =
+      document.getElementById(
+        "servicego-message"
+      );
+
+
+    if (box) {
+
+      box.textContent =
+        message;
+
+      box.style.display =
+        "block";
+
+
+      clearTimeout(
+        box._timer
+      );
+
+
+      box._timer =
+        setTimeout(
+          function () {
+
+            box.style.display =
+              "none";
+
+          },
+          3000
+        );
+
+
+      return;
+
+    }
+
+
+    alert(message);
+
+  }
+
+
+})();
+
+</script>
