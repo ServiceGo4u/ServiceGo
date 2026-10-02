@@ -6030,3 +6030,486 @@ input:focus-visible {
 })();
 
 </script>
+<!-- =========================
+     SERVICEGO PART 7
+     CUSTOMER NAVIGATION + PREMIUM LOGO
+========================= -->
+
+<style>
+/* PREMIUM SERVICEGO LOGO */
+
+.brand-mark,
+.brand-mark.small,
+.brand-mark.tiny{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#176b4d,#21845f);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:0 8px 22px rgba(23,107,77,.22);
+}
+
+.brand-mark span{
+  display:none;
+}
+
+.brand-mark::before{
+  content:"";
+  position:absolute;
+  width:18px;
+  height:18px;
+  border:2.5px solid #fff;
+  border-radius:6px 6px 10px 10px;
+  transform:rotate(45deg);
+  top:7px;
+  left:7px;
+}
+
+.brand-mark::after{
+  content:"S";
+  position:absolute;
+  color:#fff;
+  font-family:Manrope,sans-serif;
+  font-size:15px;
+  font-weight:800;
+  top:5px;
+  left:11px;
+  transform:rotate(0deg);
+}
+
+
+/* CUSTOMER NAVIGATION SCREENS */
+
+.sg-extra-screen{
+  min-height:100vh;
+  background:#f7f9f8;
+  color:#17352a;
+  padding-bottom:90px;
+}
+
+.sg-extra-header{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:20px 18px;
+  background:#fff;
+  border-bottom:1px solid #e7eeea;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.sg-extra-back{
+  width:40px;
+  height:40px;
+  border:0;
+  border-radius:12px;
+  background:#edf5f1;
+  color:#176b4d;
+  font-size:21px;
+}
+
+.sg-extra-title{
+  font-family:Manrope,sans-serif;
+  font-size:20px;
+  font-weight:800;
+}
+
+.sg-extra-content{
+  padding:24px 18px;
+}
+
+.sg-page-label{
+  color:#176b4d;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.4px;
+}
+
+.sg-page-heading{
+  margin:8px 0 8px;
+  font-family:Manrope,sans-serif;
+  font-size:30px;
+  line-height:1.15;
+}
+
+.sg-page-text{
+  color:#66766f;
+  line-height:1.6;
+  margin-bottom:22px;
+}
+
+.sg-empty-card{
+  background:#fff;
+  border:1px solid #e5ece8;
+  border-radius:20px;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(23,53,42,.06);
+}
+
+.sg-empty-icon{
+  width:58px;
+  height:58px;
+  margin:0 auto 15px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#edf5f1;
+  color:#176b4d;
+  font-size:25px;
+}
+
+.sg-empty-card h3{
+  margin:0 0 8px;
+  font-family:Manrope,sans-serif;
+}
+
+.sg-empty-card p{
+  margin:0;
+  color:#718078;
+  line-height:1.5;
+}
+
+
+/* HELP CARDS */
+
+.sg-help-card{
+  background:#fff;
+  border:1px solid #e5ece8;
+  border-radius:18px;
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.sg-help-card strong{
+  display:block;
+  margin-bottom:5px;
+}
+
+.sg-help-card span{
+  color:#718078;
+  font-size:14px;
+  line-height:1.5;
+}
+
+
+/* PROFILE */
+
+.sg-profile-card{
+  background:#fff;
+  border:1px solid #e5ece8;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 8px 25px rgba(23,53,42,.06);
+}
+
+.sg-profile-avatar{
+  width:64px;
+  height:64px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#176b4d;
+  color:#fff;
+  font-size:25px;
+  font-weight:800;
+  margin-bottom:13px;
+}
+
+.sg-profile-card h2{
+  margin:0 0 5px;
+  font-family:Manrope,sans-serif;
+}
+
+.sg-profile-card p{
+  margin:0;
+  color:#718078;
+}
+
+.sg-profile-option{
+  width:100%;
+  border:0;
+  background:#fff;
+  border-bottom:1px solid #edf1ef;
+  padding:17px 4px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  text-align:left;
+  color:#233b31;
+}
+
+.sg-profile-option span:last-child{
+  color:#9aa59f;
+  font-size:20px;
+}
+</style>
+
+
+<script>
+(function(){
+
+  function showCustomerScreen(screenId){
+    document.querySelectorAll(".screen").forEach(function(screen){
+      screen.classList.add("hidden");
+    });
+
+    var target=document.getElementById(screenId);
+
+    if(target){
+      target.classList.remove("hidden");
+      window.scrollTo(0,0);
+    }
+  }
+
+
+  /* CREATE CUSTOMER EXTRA SCREENS */
+
+  var app=document.getElementById("servicego-app");
+
+  if(!app) return;
+
+
+  /* BOOKINGS */
+
+  if(!document.getElementById("customer-bookings-screen")){
+    app.insertAdjacentHTML("beforeend",`
+
+      <section id="customer-bookings-screen"
+        class="screen sg-extra-screen hidden">
+
+        <header class="sg-extra-header">
+
+          <button type="button"
+            class="sg-extra-back"
+            data-back-home>
+            ←
+          </button>
+
+          <div class="sg-extra-title">
+            My Bookings
+          </div>
+
+        </header>
+
+        <main class="sg-extra-content">
+
+          <span class="sg-page-label">
+            SERVICEGO BOOKINGS
+          </span>
+
+          <h1 class="sg-page-heading">
+            Your service<br>
+            bookings.
+          </h1>
+
+          <p class="sg-page-text">
+            Track your requested, accepted and completed
+            services from one place.
+          </p>
+
+          <div class="sg-empty-card">
+
+            <div class="sg-empty-icon">▣</div>
+
+            <h3>No bookings yet</h3>
+
+            <p>
+              When you book a service, your booking status
+              will appear here.
+            </p>
+
+          </div>
+
+        </main>
+
+      </section>
+    `);
+  }
+
+
+  /* HELP */
+
+  if(!document.getElementById("customer-help-screen")){
+    app.insertAdjacentHTML("beforeend",`
+
+      <section id="customer-help-screen"
+        class="screen sg-extra-screen hidden">
+
+        <header class="sg-extra-header">
+
+          <button type="button"
+            class="sg-extra-back"
+            data-back-home>
+            ←
+          </button>
+
+          <div class="sg-extra-title">
+            Help & Support
+          </div>
+
+        </header>
+
+        <main class="sg-extra-content">
+
+          <span class="sg-page-label">
+            SERVICEGO SUPPORT
+          </span>
+
+          <h1 class="sg-page-heading">
+            How can we<br>
+            help you?
+          </h1>
+
+          <p class="sg-page-text">
+            Find quick answers and support for your
+            ServiceGo experience.
+          </p>
+
+          <div class="sg-help-card">
+            <strong>Booking help</strong>
+            <span>
+              Get help with booking, cancellation and
+              service status.
+            </span>
+          </div>
+
+          <div class="sg-help-card">
+            <strong>Payment & pricing</strong>
+            <span>
+              Understand service charges and payment
+              information.
+            </span>
+          </div>
+
+          <div class="sg-help-card">
+            <strong>Contact support</strong>
+            <span>
+              ServiceGo support options will be available
+              here.
+            </span>
+          </div>
+
+        </main>
+
+      </section>
+    `);
+  }
+
+
+  /* PROFILE */
+
+  if(!document.getElementById("customer-profile-screen")){
+    app.insertAdjacentHTML("beforeend",`
+
+      <section id="customer-profile-screen"
+        class="screen sg-extra-screen hidden">
+
+        <header class="sg-extra-header">
+
+          <button type="button"
+            class="sg-extra-back"
+            data-back-home>
+            ←
+          </button>
+
+          <div class="sg-extra-title">
+            My Profile
+          </div>
+
+        </header>
+
+        <main class="sg-extra-content">
+
+          <div class="sg-profile-card">
+
+            <div class="sg-profile-avatar">
+              S
+            </div>
+
+            <h2>ServiceGo Customer</h2>
+
+            <p>
+              Complete your profile to make booking
+              services easier.
+            </p>
+
+          </div>
+
+          <div class="sg-profile-card">
+
+            <button class="sg-profile-option">
+              <span>Personal Information</span>
+              <span>›</span>
+            </button>
+
+            <button class="sg-profile-option">
+              <span>Saved Locations</span>
+              <span>›</span>
+            </button>
+
+            <button class="sg-profile-option">
+              <span>Privacy & Security</span>
+              <span>›</span>
+            </button>
+
+          </div>
+
+        </main>
+
+      </section>
+    `);
+  }
+
+
+  /* BOTTOM NAVIGATION */
+
+  document.querySelectorAll('[data-nav="customer-bookings"]')
+    .forEach(function(button){
+      button.addEventListener("click",function(){
+        showCustomerScreen("customer-bookings-screen");
+      });
+    });
+
+
+  document.querySelectorAll('[data-nav="customer-help"]')
+    .forEach(function(button){
+      button.addEventListener("click",function(){
+        showCustomerScreen("customer-help-screen");
+      });
+    });
+
+
+  document.querySelectorAll('[data-nav="customer-profile"]')
+    .forEach(function(button){
+      button.addEventListener("click",function(){
+        showCustomerScreen("customer-profile-screen");
+      });
+    });
+
+
+  document.querySelectorAll('[data-nav="customer-home"]')
+    .forEach(function(button){
+      button.addEventListener("click",function(){
+        showCustomerScreen("customer-home-screen");
+      });
+    });
+
+
+  /* BACK TO HOME */
+
+  document.addEventListener("click",function(event){
+
+    if(event.target.closest("[data-back-home]")){
+      showCustomerScreen("customer-home-screen");
+    }
+
+  });
+
+})();
+</script>
+
+<!-- SERVICEGO PART 7 END -->
