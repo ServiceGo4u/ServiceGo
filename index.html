@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
 
   <meta
@@ -9,128 +10,68 @@
   >
 
   <meta
-    name="theme-color"
-    content="#167653"
-  >
-
-  <meta
     name="description"
-    content="ServiceGo — trusted local services, made simple."
+    content="ServiceGo connects customers with trusted local service providers."
   >
 
   <meta
-    name="mobile-web-app-capable"
-    content="yes"
+    name="theme-color"
+    content="#087f5b"
   >
 
-  <meta
-    name="apple-mobile-web-app-capable"
-    content="yes"
-  >
-
-  <title>ServiceGo — Local Services, Made Simple</title>
-
+  <title>ServiceGo</title>
 
   <!-- =========================================================
        SERVICEGO — PART 1
-       BRAND + CORE APP STRUCTURE
-       
-       IMPORTANT:
-       Part 2 will continue directly below this Part.
-       Do not paste Part 2 anywhere else.
-  ========================================================== -->
-
+       CORE DOCUMENT + PREMIUM LOADING SCREEN
+       ========================================================= -->
 
   <style>
 
     /* =========================================================
-       SERVICEGO DESIGN SYSTEM
-    ========================================================== */
-
-    :root {
-
-      --sg-green: #167653;
-      --sg-green-dark: #0f6044;
-      --sg-green-soft: #eaf5f0;
-      --sg-green-pale: #f3faf7;
-
-      --sg-navy: #142a40;
-      --sg-text: #263746;
-      --sg-muted: #72808a;
-
-      --sg-white: #ffffff;
-      --sg-bg: #f7faf8;
-      --sg-border: #e1e9e5;
-
-      --sg-shadow:
-        0 18px 50px rgba(20, 42, 64, 0.09);
-
-      --sg-shadow-soft:
-        0 8px 28px rgba(20, 42, 64, 0.07);
-
-      --sg-radius-xl: 30px;
-      --sg-radius-lg: 22px;
-      --sg-radius-md: 16px;
-      --sg-radius-sm: 12px;
-
-      --sg-transition:
-        180ms ease;
-
-    }
-
-
-    /* =========================================================
        RESET
-    ========================================================== */
+       ========================================================= */
 
-    *,
-    *::before,
-    *::after {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
-
 
     html {
       width: 100%;
       min-height: 100%;
-      background: var(--sg-bg);
       scroll-behavior: smooth;
+      background: #f7faf9;
     }
-
 
     body {
       width: 100%;
       min-height: 100vh;
-
+      min-height: 100dvh;
+      overflow-x: hidden;
       background:
         radial-gradient(
-          circle at 50% -10%,
-          rgba(22, 118, 83, 0.07),
-          transparent 38%
+          circle at 50% 18%,
+          rgba(28, 155, 112, 0.08),
+          transparent 32%
         ),
-        var(--sg-bg);
-
-      color: var(--sg-text);
-
+        linear-gradient(
+          180deg,
+          #fbfdfc 0%,
+          #f5faf8 100%
+        );
+      color: #102d42;
       font-family:
         Inter,
-        ui-sans-serif,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         Roboto,
-        Helvetica,
         Arial,
         sans-serif;
-
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-
-      overflow-x: hidden;
     }
-
 
     button,
     input,
@@ -139,263 +80,303 @@
       font: inherit;
     }
 
-
     button {
       border: 0;
       cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
     }
 
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
 
-    button:focus-visible,
-    input:focus-visible,
-    select:focus-visible,
-    textarea:focus-visible {
-      outline: 3px solid rgba(22, 118, 83, 0.20);
-      outline-offset: 2px;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
 
     /* =========================================================
        APP ROOT
-    ========================================================== */
+       ========================================================= */
 
     #servicego-app {
+      position: relative;
       width: 100%;
       min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-
-    /* =========================================================
-       COMMON SCREEN SYSTEM
-    ========================================================== */
-
-    .sg-screen {
-      width: 100%;
-      min-height: 100vh;
-      position: relative;
-    }
-
-
-    .sg-hidden {
-      display: none !important;
-    }
-
-
-    /* =========================================================
-       PREMIUM LOGO
-       
-       Same logo system will be reused in later Parts.
-    ========================================================== */
-
-    .sg-logo {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 64px;
-      height: 64px;
-
-      flex: 0 0 auto;
-
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #238b66 0%,
-          #167653 58%,
-          #0f6044 100%
-        );
-
-      box-shadow:
-        0 14px 30px rgba(22, 118, 83, 0.20),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28);
-
+      min-height: 100dvh;
       overflow: hidden;
     }
 
 
-    .sg-logo svg {
-      width: 72%;
-      height: 72%;
-      display: block;
-    }
-
-
-    .sg-logo-small {
-      width: 48px;
-      height: 48px;
-      border-radius: 15px;
-    }
-
-
-    .sg-logo-tiny {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-    }
-
-
     /* =========================================================
-       BRAND WORDMARK
-    ========================================================== */
+       COMMON SCREEN
+       ========================================================= */
 
-    .sg-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-
-    .sg-brand-name {
-      color: var(--sg-navy);
-
-      font-size: 27px;
-      line-height: 1;
-
-      font-weight: 800;
-      letter-spacing: -1.4px;
-    }
-
-
-    .sg-brand-subtitle {
-      margin-top: 6px;
-
-      color: var(--sg-muted);
-
-      font-size: 12px;
-      line-height: 1.2;
-
-      font-weight: 600;
-      letter-spacing: 0.1px;
-    }
-
-
-    /* =========================================================
-       SPLASH SCREEN
-    ========================================================== */
-
-    #sg-splash-screen {
+    .sg-screen {
+      position: relative;
+      width: 100%;
       min-height: 100vh;
+      min-height: 100dvh;
+    }
+
+
+    /* =========================================================
+       LOADING SCREEN
+       ========================================================= */
+
+    #sg-loading-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
 
       display: flex;
       align-items: center;
       justify-content: center;
 
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+
       padding:
-        32px
-        22px;
+        env(safe-area-inset-top)
+        24px
+        env(safe-area-inset-bottom);
 
       background:
         radial-gradient(
-          circle at 50% 42%,
-          rgba(22, 118, 83, 0.055),
-          transparent 34%
+          circle at 50% 28%,
+          rgba(19, 151, 106, 0.09),
+          transparent 31%
         ),
         linear-gradient(
           180deg,
-          #fbfdfc 0%,
-          #f5faf7 100%
+          #ffffff 0%,
+          #f5faf8 100%
         );
+
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+
+      transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease,
+        transform 0.45s ease;
     }
 
-
-    .sg-splash-content {
-      width: min(100%, 390px);
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      text-align: center;
-
+    #sg-loading-screen.sg-loading-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
       transform: translateY(-8px);
     }
 
 
-    .sg-splash-logo {
-      width: 104px;
-      height: 104px;
+    /* =========================================================
+       LOADING CONTENT
+       ========================================================= */
 
-      border-radius: 30px;
+    .sg-loading-content {
+      width: 100%;
+      max-width: 430px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+    }
+
+
+    /* =========================================================
+       SERVICEGO PREMIUM LOGO
+       OLD STYLE — GREEN SQUARE + WHITE WAVEFORM
+       ========================================================= */
+
+    .sg-logo-box {
+      position: relative;
+
+      width: 112px;
+      height: 112px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 31px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #27a979 0%,
+          #159568 48%,
+          #086c4e 100%
+        );
 
       box-shadow:
-        0 22px 48px rgba(22, 118, 83, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.30);
+        0 22px 48px rgba(8, 108, 78, 0.20),
+        inset 0 1px 0 rgba(255,255,255,0.28),
+        inset 0 -8px 18px rgba(0,0,0,0.08);
+
+      overflow: hidden;
 
       animation: sgLogoFloat 2.8s ease-in-out infinite;
     }
 
+    .sg-logo-box::before {
+      content: "";
+      position: absolute;
 
-    .sg-splash-logo svg {
-      width: 72%;
-      height: 72%;
+      inset: 9px;
+
+      border-radius: 24px;
+
+      border: 1.5px solid rgba(255,255,255,0.16);
+
+      pointer-events: none;
+    }
+
+    .sg-logo-box::after {
+      content: "";
+
+      position: absolute;
+
+      width: 90px;
+      height: 90px;
+
+      top: -48px;
+      left: 12px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,0.09);
+
+      transform: rotate(-18deg);
+
+      pointer-events: none;
     }
 
 
-    @keyframes sgLogoFloat {
+    /* =========================================================
+       WHITE SERVICE WAVEFORM
+       ========================================================= */
 
-      0%,
-      100% {
-        transform: translateY(0);
-      }
+    .sg-logo-wave {
+      position: relative;
+      z-index: 2;
 
-      50% {
-        transform: translateY(-5px);
-      }
+      width: 78px;
+      height: 50px;
+    }
 
+    .sg-logo-wave svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .sg-logo-wave path {
+      fill: none;
+
+      stroke: #ffffff;
+
+      stroke-width: 5.5;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+
+      filter:
+        drop-shadow(
+          0 2px 3px rgba(0,0,0,0.10)
+        );
     }
 
 
-    .sg-splash-title {
-      margin-top: 28px;
+    /* =========================================================
+       BRAND NAME
+       ========================================================= */
 
-      color: var(--sg-navy);
+    .sg-brand-name {
+      margin-top: 26px;
 
-      font-size:
-        clamp(38px, 10vw, 52px);
-
-      line-height: 0.95;
+      font-size: 44px;
+      line-height: 1;
 
       font-weight: 800;
 
-      letter-spacing: -2.7px;
+      letter-spacing: -2.1px;
+
+      color: #102f4a;
+
+      text-align: center;
+    }
+
+    .sg-brand-name span {
+      color: #102f4a;
     }
 
 
-    .sg-splash-tagline {
-      max-width: 310px;
+    /* =========================================================
+       LOADING MESSAGE
+       ========================================================= */
 
-      margin-top: 18px;
+    .sg-loading-message {
+      margin-top: 20px;
 
-      color: var(--sg-muted);
+      max-width: 340px;
 
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.55;
 
       font-weight: 500;
+
+      letter-spacing: -0.2px;
+
+      color: #71808a;
+
+      text-align: center;
     }
 
 
-    .sg-loading-track {
-      width: 150px;
-      height: 6px;
+    /* =========================================================
+       PROGRESS BAR
+       NOTE:
+       The animation itself will be activated by the final
+       application script in a later part.
+       ========================================================= */
 
-      margin-top: 28px;
+    .sg-progress-wrap {
+      width: min(100%, 368px);
+
+      margin-top: 38px;
+    }
+
+    .sg-progress-track {
+      position: relative;
+
+      width: 100%;
+      height: 9px;
 
       overflow: hidden;
 
       border-radius: 999px;
 
-      background: #dcebe5;
+      background: #dce9e5;
+
+      box-shadow:
+        inset 0 1px 2px rgba(0,0,0,0.04);
     }
 
+    .sg-progress-bar {
+      position: absolute;
 
-    .sg-loading-bar {
-      width: 48%;
+      left: 0;
+      top: 0;
+
+      width: 0%;
       height: 100%;
 
       border-radius: inherit;
@@ -403,479 +384,120 @@
       background:
         linear-gradient(
           90deg,
-          var(--sg-green-dark),
-          var(--sg-green)
+          #0b7656 0%,
+          #14966d 50%,
+          #21ad80 100%
         );
 
-      animation:
-        sgLoading 1.6s ease-in-out infinite;
+      box-shadow:
+        0 2px 7px rgba(12, 137, 97, 0.25);
+
+      transition:
+        width 0.25s linear;
     }
 
 
-    @keyframes sgLoading {
+    /* =========================================================
+       LOADING STATUS
+       ========================================================= */
+
+    .sg-loading-status {
+      min-height: 24px;
+
+      margin-top: 14px;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      letter-spacing: 0.2px;
+
+      color: #7b898f;
+
+      text-align: center;
+    }
+
+
+    /* =========================================================
+       LOGO ANIMATION
+       ========================================================= */
+
+    @keyframes sgLogoFloat {
 
       0% {
-        transform: translateX(-115%);
+        transform: translateY(0);
       }
 
       50% {
-        transform: translateX(105%);
+        transform: translateY(-5px);
       }
 
       100% {
-        transform: translateX(220%);
+        transform: translateY(0);
       }
 
     }
 
 
     /* =========================================================
-       WELCOME SCREEN
-    ========================================================== */
-
-    #sg-welcome-screen {
-      min-height: 100vh;
-
-      display: flex;
-      flex-direction: column;
-
-      background:
-        radial-gradient(
-          circle at 90% 0%,
-          rgba(22, 118, 83, 0.06),
-          transparent 28%
-        ),
-        var(--sg-bg);
-    }
-
-
-    .sg-welcome-header {
-      width: 100%;
-      padding:
-        24px
-        20px
-        12px;
-    }
-
-
-    .sg-header-inner {
-      width: min(100%, 1120px);
-      margin: 0 auto;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-
-    .sg-welcome-main {
-      width: min(100%, 1120px);
-      margin: 0 auto;
-
-      flex: 1;
-
-      padding:
-        28px
-        20px
-        36px;
-    }
-
-
-    .sg-welcome-copy {
-      max-width: 720px;
-    }
-
-
-    .sg-eyebrow {
-      display: inline-block;
-
-      color: var(--sg-green);
-
-      font-size: 11px;
-      line-height: 1;
-
-      font-weight: 800;
-
-      letter-spacing: 2.2px;
-      text-transform: uppercase;
-    }
-
-
-    .sg-welcome-title {
-      margin-top: 16px;
-
-      color: var(--sg-navy);
-
-      font-size:
-        clamp(42px, 11vw, 76px);
-
-      line-height: 0.98;
-
-      font-weight: 800;
-
-      letter-spacing: -3.4px;
-    }
-
-
-    .sg-welcome-title strong {
-      color: var(--sg-green);
-      font-weight: 800;
-    }
-
-
-    .sg-welcome-description {
-      max-width: 650px;
-
-      margin-top: 20px;
-
-      color: var(--sg-muted);
-
-      font-size:
-        clamp(15px, 4vw, 19px);
-
-      line-height: 1.65;
-
-      font-weight: 500;
-    }
-
-
-    /* =========================================================
-       ROLE SELECTION
-    ========================================================== */
-
-    .sg-role-area {
-      margin-top: 38px;
-    }
-
-
-    .sg-role-heading {
-      margin-bottom: 14px;
-
-      color: var(--sg-navy);
-
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-
-    .sg-role-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-
-      gap: 14px;
-
-      max-width: 760px;
-    }
-
-
-    .sg-role-card {
-      width: 100%;
-
-      display: flex;
-      align-items: center;
-
-      gap: 15px;
-
-      padding: 17px;
-
-      text-align: left;
-
-      border:
-        1px solid
-        var(--sg-border);
-
-      border-radius:
-        var(--sg-radius-lg);
-
-      background:
-        rgba(255, 255, 255, 0.88);
-
-      box-shadow:
-        var(--sg-shadow-soft);
-
-      transition:
-        transform var(--sg-transition),
-        border-color var(--sg-transition),
-        box-shadow var(--sg-transition);
-
-      -webkit-backdrop-filter: blur(10px);
-      backdrop-filter: blur(10px);
-    }
-
-
-    .sg-role-card:hover {
-      transform: translateY(-2px);
-
-      border-color:
-        rgba(22, 118, 83, 0.28);
-
-      box-shadow:
-        var(--sg-shadow);
-    }
-
-
-    .sg-role-card:active {
-      transform: scale(0.985);
-    }
-
-
-    .sg-role-icon {
-      width: 52px;
-      height: 52px;
-
-      flex: 0 0 52px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 17px;
-
-      background:
-        var(--sg-green-soft);
-
-      color: var(--sg-green);
-
-      font-size: 21px;
-      font-weight: 800;
-    }
-
-
-    .sg-role-content {
-      min-width: 0;
-      flex: 1;
-    }
-
-
-    .sg-role-title {
-      display: block;
-
-      color: var(--sg-navy);
-
-      font-size: 17px;
-      line-height: 1.2;
-
-      font-weight: 800;
-    }
-
-
-    .sg-role-description {
-      display: block;
-
-      margin-top: 5px;
-
-      color: var(--sg-muted);
-
-      font-size: 13px;
-      line-height: 1.45;
-
-      font-weight: 500;
-    }
-
-
-    .sg-role-arrow {
-      width: 38px;
-      height: 38px;
-
-      flex: 0 0 38px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      color: var(--sg-green);
-
-      background: var(--sg-green-pale);
-
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-
-    /* =========================================================
-       TRUST STRIP
-    ========================================================== */
-
-    .sg-trust-strip {
-      max-width: 760px;
-
-      margin-top: 18px;
-
-      display: flex;
-      align-items: flex-start;
-
-      gap: 12px;
-
-      padding: 15px;
-
-      border:
-        1px solid
-        var(--sg-border);
-
-      border-radius:
-        var(--sg-radius-md);
-
-      background:
-        rgba(255, 255, 255, 0.68);
-    }
-
-
-    .sg-trust-icon {
-      width: 28px;
-      height: 28px;
-
-      flex: 0 0 28px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-
-      background: var(--sg-green-soft);
-
-      color: var(--sg-green);
-
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-
-    .sg-trust-text strong {
-      display: block;
-
-      color: var(--sg-navy);
-
-      font-size: 13px;
-      line-height: 1.3;
-    }
-
-
-    .sg-trust-text span {
-      display: block;
-
-      margin-top: 3px;
-
-      color: var(--sg-muted);
-
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-
-    /* =========================================================
-       FOOTER
-    ========================================================== */
-
-    .sg-welcome-footer {
-      width: min(100%, 1120px);
-      margin: 0 auto;
-
-      padding:
-        0
-        20px
-        28px;
-
-      text-align: center;
-
-      color: var(--sg-muted);
-
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-
-    .sg-footer-note {
-      color: var(--sg-muted);
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================== */
-
-    @media (min-width: 700px) {
-
-      .sg-welcome-header {
-        padding:
-          34px
-          34px
-          12px;
-      }
-
-
-      .sg-welcome-main {
-        padding:
-          64px
-          34px
-          50px;
-      }
-
-
-      .sg-role-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-
-
-      .sg-welcome-footer {
-        padding:
-          0
-          34px
-          34px;
-      }
-
-    }
-
+       SMALL MOBILE DEVICES
+       ========================================================= */
 
     @media (max-width: 380px) {
 
-      .sg-splash-logo {
-        width: 92px;
-        height: 92px;
+      .sg-logo-box {
+        width: 96px;
+        height: 96px;
+        border-radius: 27px;
       }
 
-
-      .sg-splash-title {
-        font-size: 39px;
+      .sg-logo-wave {
+        width: 68px;
+        height: 44px;
       }
 
-
-      .sg-welcome-title {
-        font-size: 39px;
-        letter-spacing: -2.3px;
+      .sg-brand-name {
+        margin-top: 22px;
+        font-size: 38px;
+        letter-spacing: -1.8px;
       }
 
-
-      .sg-role-card {
-        padding: 14px;
+      .sg-loading-message {
+        margin-top: 17px;
+        font-size: 16px;
+        max-width: 300px;
       }
 
-
-      .sg-role-icon {
-        width: 46px;
-        height: 46px;
-        flex-basis: 46px;
+      .sg-progress-wrap {
+        margin-top: 32px;
       }
 
     }
 
 
     /* =========================================================
-       REDUCED MOTION
-    ========================================================== */
+       LARGER SCREENS
+       ========================================================= */
 
-    @media (prefers-reduced-motion: reduce) {
+    @media (min-width: 700px) {
 
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
+      .sg-logo-box {
+        width: 128px;
+        height: 128px;
+        border-radius: 35px;
+      }
+
+      .sg-logo-wave {
+        width: 88px;
+        height: 56px;
+      }
+
+      .sg-brand-name {
+        font-size: 50px;
+      }
+
+      .sg-loading-message {
+        font-size: 19px;
       }
 
     }
@@ -887,177 +509,836 @@
 
 <body>
 
-
   <div id="servicego-app">
 
 
     <!-- =======================================================
-         PART 1 — SPLASH SCREEN
-    ======================================================== -->
+         SERVICEGO LOADING SCREEN
+         ======================================================= -->
 
     <section
-      id="sg-splash-screen"
+      id="sg-loading-screen"
       class="sg-screen"
-      aria-label="ServiceGo loading screen"
+      aria-label="ServiceGo loading"
     >
 
-      <div class="sg-splash-content">
+      <div class="sg-loading-content">
 
 
-        <!-- PREMIUM SERVICEGO LOGO -->
+        <!-- ===================================================
+             SERVICEGO LOGO
+             =================================================== -->
 
         <div
-          class="sg-logo sg-splash-logo"
+          class="sg-logo-box"
           aria-label="ServiceGo logo"
-          role="img"
         >
 
-          <svg
-            viewBox="0 0 100 100"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
+          <div class="sg-logo-wave">
 
-            <!-- subtle inner shine -->
-            <path
-              d="M18 25
-                 C18 20 22 16 27 16
-                 H73
-                 C78 16 82 20 82 25
-                 V75
-                 C82 80 78 84 73 84
-                 H27
-                 C22 84 18 80 18 75
-                 Z"
-              fill="none"
-              stroke="rgba(255,255,255,0.10)"
-              stroke-width="2"
-            />
+            <svg
+              viewBox="0 0 100 60"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
 
-            <!-- service pulse -->
-            <path
-              d="M12 52
-                 H31
-                 L37 52
-                 L43 35
-                 L50 67
-                 L57 46
-                 L63 52
-                 H88"
-              fill="none"
-              stroke="#ffffff"
-              stroke-width="6"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
+              <path
+                d="M6 31
+                   C15 31 18 31 24 31
+                   L34 31
+                   L39 17
+                   L45 44
+                   L51 31
+                   L61 31
+                   C70 31 78 31 94 31"
+              />
 
-          </svg>
+            </svg>
+
+          </div>
 
         </div>
 
 
-        <h1 class="sg-splash-title">
+        <!-- ===================================================
+             BRAND
+             =================================================== -->
+
+        <div class="sg-brand-name">
           ServiceGo
-        </h1>
-
-
-        <div class="sg-loading-track" aria-hidden="true">
-          <div class="sg-loading-bar"></div>
         </div>
 
 
-        <p class="sg-splash-tagline">
+        <!-- ===================================================
+             LOADING MESSAGE
+             =================================================== -->
+
+        <p
+          class="sg-loading-message"
+          id="sg-loading-message"
+        >
           Trusted services, right when you need them.
         </p>
+
+
+        <!-- ===================================================
+             PROGRESS
+             =================================================== -->
+
+        <div
+          class="sg-progress-wrap"
+          aria-hidden="true"
+        >
+
+          <div class="sg-progress-track">
+
+            <div
+              class="sg-progress-bar"
+              id="sg-progress-bar"
+            ></div>
+
+          </div>
+
+          <div
+            class="sg-loading-status"
+            id="sg-loading-status"
+          >
+            Preparing ServiceGo...
+          </div>
+
+        </div>
+
 
       </div>
 
     </section>
 
 
-
     <!-- =======================================================
-         PART 1 — WELCOME SCREEN FOUNDATION
-         
-         Language system will be connected in PART 2.
-    ======================================================== -->
+         PART 2 WILL BE PASTED DIRECTLY BELOW THIS LINE.
+         DO NOT ADD </body> OR </html> HERE.
+         ======================================================= -->
+      <!-- =========================================================
+       SERVICEGO — PART 2
+       WELCOME + ROLE SELECTION SCREEN
+       ========================================================= -->
 
-    <section
-      id="sg-welcome-screen"
-      class="sg-screen sg-hidden"
-      aria-label="Welcome to ServiceGo"
-    >
+  <style>
 
+    /* =========================================================
+       WELCOME SCREEN
+       ========================================================= */
+
+    #sg-welcome-screen {
+      display: none;
+
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+
+      padding:
+        34px 20px
+        calc(30px + env(safe-area-inset-bottom));
+
+      background:
+        radial-gradient(
+          circle at 12% 8%,
+          rgba(30, 157, 115, 0.09),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 35%,
+          rgba(16, 61, 86, 0.055),
+          transparent 28%
+        ),
+        linear-gradient(
+          180deg,
+          #fbfdfc 0%,
+          #f4faf8 100%
+        );
+
+      overflow-x: hidden;
+    }
+
+    #sg-welcome-screen.sg-screen-active {
+      display: block;
+    }
+
+
+    /* =========================================================
+       WELCOME CONTAINER
+       ========================================================= */
+
+    .sg-welcome-container {
+      width: 100%;
+      max-width: 680px;
+
+      margin: 0 auto;
+    }
+
+
+    /* =========================================================
+       SMALL BRAND HEADER
+       ========================================================= */
+
+    .sg-welcome-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      width: 100%;
+
+      margin-bottom: 48px;
+    }
+
+    .sg-mini-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    /* =========================================================
+       MINI SERVICEGO LOGO
+       SAME BRAND STYLE
+       ========================================================= */
+
+    .sg-mini-logo {
+      position: relative;
+
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 14px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #27a979 0%,
+          #159568 48%,
+          #086c4e 100%
+        );
+
+      box-shadow:
+        0 9px 22px rgba(8, 108, 78, 0.16),
+        inset 0 1px 0 rgba(255,255,255,0.24);
+
+      overflow: hidden;
+    }
+
+    .sg-mini-logo svg {
+      position: relative;
+      z-index: 2;
+
+      width: 34px;
+      height: 25px;
+    }
+
+    .sg-mini-logo path {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .sg-mini-brand-name {
+      color: #102f4a;
+
+      font-size: 21px;
+      font-weight: 800;
+
+      letter-spacing: -0.7px;
+    }
+
+
+    /* =========================================================
+       WELCOME INTRO
+       ========================================================= */
+
+    .sg-welcome-intro {
+      margin-bottom: 34px;
+    }
+
+    .sg-welcome-eyebrow {
+      display: inline-flex;
+      align-items: center;
+
+      min-height: 30px;
+
+      padding: 6px 12px;
+
+      border-radius: 999px;
+
+      background: rgba(20, 150, 109, 0.09);
+
+      color: #087956;
+
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .sg-welcome-title {
+      margin-top: 18px;
+
+      color: #102f4a;
+
+      font-size: clamp(38px, 9vw, 62px);
+      line-height: 0.98;
+
+      font-weight: 850;
+
+      letter-spacing: -2.8px;
+    }
+
+    .sg-welcome-title .sg-title-green {
+      color: #087956;
+    }
+
+    .sg-welcome-description {
+      max-width: 610px;
+
+      margin-top: 20px;
+
+      color: #6d7d86;
+
+      font-size: 17px;
+      line-height: 1.65;
+
+      font-weight: 500;
+    }
+
+
+    /* =========================================================
+       ROLE QUESTION
+       ========================================================= */
+
+    .sg-role-heading {
+      margin-top: 38px;
+      margin-bottom: 16px;
+
+      color: #17394d;
+
+      font-size: 20px;
+      line-height: 1.3;
+
+      font-weight: 800;
+
+      letter-spacing: -0.4px;
+    }
+
+
+    /* =========================================================
+       ROLE CARDS
+       ========================================================= */
+
+    .sg-role-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+
+      width: 100%;
+    }
+
+    .sg-role-card {
+      position: relative;
+
+      width: 100%;
+      min-height: 126px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 20px;
+
+      border: 1px solid rgba(12, 111, 83, 0.13);
+
+      border-radius: 25px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.98),
+          rgba(248,252,250,0.96)
+        );
+
+      box-shadow:
+        0 10px 28px rgba(22, 53, 68, 0.06),
+        0 2px 5px rgba(22, 53, 68, 0.035);
+
+      text-align: left;
+
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+
+      overflow: hidden;
+    }
+
+    .sg-role-card::before {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      top: 18px;
+      bottom: 18px;
+
+      width: 4px;
+
+      border-radius: 0 5px 5px 0;
+
+      background: #159568;
+
+      opacity: 0.75;
+    }
+
+    .sg-role-card:active {
+      transform: scale(0.985);
+
+      box-shadow:
+        0 6px 18px rgba(22, 53, 68, 0.07);
+    }
+
+    .sg-role-card:focus-visible {
+      outline: 3px solid rgba(21, 149, 104, 0.22);
+      outline-offset: 3px;
+    }
+
+
+    /* =========================================================
+       CUSTOMER ICON
+       ========================================================= */
+
+    .sg-customer-icon {
+      flex: 0 0 70px;
+
+      width: 70px;
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 18px;
+
+      border-radius: 21px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #eaf9f4,
+          #dff4ed
+        );
+
+      color: #087956;
+    }
+
+    .sg-customer-icon svg {
+      width: 43px;
+      height: 43px;
+    }
+
+    .sg-customer-icon circle,
+    .sg-customer-icon path {
+      fill: none;
+
+      stroke: currentColor;
+
+      stroke-width: 4.5;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    /* =========================================================
+       SERVICE PROVIDER ICON
+       ========================================================= */
+
+    .sg-provider-icon {
+      flex: 0 0 70px;
+
+      width: 70px;
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 18px;
+
+      border-radius: 21px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #fff8e8,
+          #fff1cc
+        );
+
+      color: #c78b1e;
+    }
+
+    .sg-provider-icon svg {
+      width: 46px;
+      height: 46px;
+
+      overflow: visible;
+    }
+
+    .sg-provider-icon path,
+    .sg-provider-icon rect,
+    .sg-provider-icon circle {
+      fill: none;
+
+      stroke: currentColor;
+
+      stroke-width: 3.8;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    /* =========================================================
+       ROLE CARD CONTENT
+       ========================================================= */
+
+    .sg-role-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sg-role-title {
+      color: #15384d;
+
+      font-size: 21px;
+      line-height: 1.2;
+
+      font-weight: 850;
+
+      letter-spacing: -0.5px;
+    }
+
+    .sg-role-description {
+      margin-top: 7px;
+
+      color: #74838a;
+
+      font-size: 14.5px;
+      line-height: 1.48;
+
+      font-weight: 500;
+    }
+
+
+    /* =========================================================
+       ROLE ARROW
+       ========================================================= */
+
+    .sg-role-arrow {
+      flex: 0 0 46px;
+
+      width: 46px;
+      height: 46px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-left: 12px;
+
+      border-radius: 50%;
+
+      background: #eef6f3;
+
+      color: #087956;
+
+      font-size: 24px;
+      font-weight: 700;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .sg-role-card:active .sg-role-arrow {
+      background: #dcefe8;
+      transform: translateX(2px);
+    }
+
+
+    /* =========================================================
+       PRIVACY NOTE
+       ========================================================= */
+
+    .sg-privacy-note {
+      display: flex;
+      align-items: flex-start;
+
+      width: 100%;
+
+      margin-top: 20px;
+      padding: 18px;
+
+      border: 1px solid rgba(16, 61, 86, 0.08);
+
+      border-radius: 22px;
+
+      background: rgba(255,255,255,0.72);
+
+      box-shadow:
+        0 7px 22px rgba(22, 53, 68, 0.035);
+    }
+
+    .sg-privacy-icon {
+      flex: 0 0 40px;
+
+      width: 40px;
+      height: 40px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 13px;
+
+      border-radius: 50%;
+
+      background: #e5f5ef;
+
+      color: #087956;
+
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .sg-privacy-title {
+      color: #17394d;
+
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .sg-privacy-text {
+      margin-top: 4px;
+
+      color: #7b898f;
+
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+
+    /* =========================================================
+       SIGN-IN AREA
+       ========================================================= */
+
+    .sg-existing-account {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 28px;
+
+      color: #7a898f;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      text-align: center;
+    }
+
+    .sg-signin-button {
+      padding: 5px 3px;
+
+      background: transparent;
+
+      color: #087956;
+
+      font-size: 15px;
+      font-weight: 850;
+
+      border-bottom: 1px solid rgba(8, 121, 86, 0.35);
+    }
+
+    .sg-signin-button:active {
+      opacity: 0.65;
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    .sg-welcome-footer {
+      margin-top: 30px;
+
+      padding-top: 22px;
+
+      border-top: 1px solid rgba(16, 61, 86, 0.07);
+
+      color: #879399;
+
+      font-size: 12px;
+      line-height: 1.5;
+
+      text-align: center;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 430px) {
+
+      #sg-welcome-screen {
+        padding-left: 17px;
+        padding-right: 17px;
+      }
+
+      .sg-welcome-header {
+        margin-bottom: 38px;
+      }
+
+      .sg-welcome-title {
+        font-size: 42px;
+        letter-spacing: -2.1px;
+      }
+
+      .sg-welcome-description {
+        font-size: 15.5px;
+      }
+
+      .sg-role-card {
+        min-height: 118px;
+        padding: 16px;
+        border-radius: 22px;
+      }
+
+      .sg-customer-icon,
+      .sg-provider-icon {
+        flex-basis: 60px;
+        width: 60px;
+        height: 60px;
+
+        margin-right: 14px;
+
+        border-radius: 18px;
+      }
+
+      .sg-customer-icon svg {
+        width: 37px;
+        height: 37px;
+      }
+
+      .sg-provider-icon svg {
+        width: 39px;
+        height: 39px;
+      }
+
+      .sg-role-title {
+        font-size: 18px;
+      }
+
+      .sg-role-description {
+        font-size: 13.5px;
+      }
+
+      .sg-role-arrow {
+        flex-basis: 42px;
+        width: 42px;
+        height: 42px;
+
+        margin-left: 7px;
+      }
+
+    }
+
+
+    @media (min-width: 700px) {
+
+      #sg-welcome-screen {
+        padding-top: 55px;
+      }
+
+      .sg-role-card {
+        min-height: 140px;
+        padding: 24px;
+      }
+
+      .sg-role-title {
+        font-size: 23px;
+      }
+
+      .sg-role-description {
+        font-size: 16px;
+      }
+
+    }
+
+  </style>
+
+
+  <!-- =========================================================
+       WELCOME / ROLE SCREEN
+       ========================================================= -->
+
+  <section
+    id="sg-welcome-screen"
+    class="sg-screen"
+    aria-label="ServiceGo welcome"
+  >
+
+    <div class="sg-welcome-container">
+
+
+      <!-- =====================================================
+           BRAND HEADER
+           ===================================================== -->
 
       <header class="sg-welcome-header">
 
-        <div class="sg-header-inner">
+        <div class="sg-mini-brand">
 
-          <div class="sg-brand">
+          <div class="sg-mini-logo">
 
-
-            <!-- SAME SERVICEGO LOGO -->
-
-            <div
-              class="sg-logo sg-logo-small"
-              aria-label="ServiceGo logo"
-              role="img"
+            <svg
+              viewBox="0 0 100 60"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
 
-              <svg
-                viewBox="0 0 100 100"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true"
-              >
+              <path
+                d="M6 31
+                   C15 31 18 31 24 31
+                   L34 31
+                   L39 17
+                   L45 44
+                   L51 31
+                   L61 31
+                   C70 31 78 31 94 31"
+              />
 
-                <path
-                  d="M18 25
-                     C18 20 22 16 27 16
-                     H73
-                     C78 16 82 20 82 25
-                     V75
-                     C82 80 78 84 73 84
-                     H27
-                     C22 84 18 80 18 75
-                     Z"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.10)"
-                  stroke-width="2"
-                />
+            </svg>
 
-                <path
-                  d="M12 52
-                     H31
-                     L37 52
-                     L43 35
-                     L50 67
-                     L57 46
-                     L63 52
-                     H88"
-                  fill="none"
-                  stroke="#ffffff"
-                  stroke-width="6"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
+          </div>
 
-              </svg>
-
-            </div>
-
-
-            <div>
-
-              <div class="sg-brand-name">
-                ServiceGo
-              </div>
-
-              <div class="sg-brand-subtitle">
-                Local services, made simple
-              </div>
-
-            </div>
-
+          <div class="sg-mini-brand-name">
+            ServiceGo
           </div>
 
         </div>
@@ -1065,175 +1346,239 @@
       </header>
 
 
+      <!-- =====================================================
+           INTRO
+           ===================================================== -->
 
-      <main class="sg-welcome-main">
+      <div class="sg-welcome-intro">
 
+        <div class="sg-welcome-eyebrow">
+          Welcome to ServiceGo
+        </div>
 
-        <div class="sg-welcome-copy">
-
-          <span class="sg-eyebrow">
-            WELCOME TO SERVICEGO
+        <h1 class="sg-welcome-title">
+          Trusted help,
+          <br>
+          <span class="sg-title-green">
+            when you need it.
           </span>
+        </h1>
+
+        <p class="sg-welcome-description">
+          Discover trusted local professionals, connect with
+          the right service provider, and manage your service
+          requests from one simple application.
+        </p>
+
+      </div>
 
 
-          <h1 class="sg-welcome-title">
-            Trusted help,<br>
-            <strong>when you need it.</strong>
-          </h1>
+      <!-- =====================================================
+           ROLE QUESTION
+           ===================================================== -->
+
+      <h2 class="sg-role-heading">
+        How will you use ServiceGo?
+      </h2>
 
 
-          <p class="sg-welcome-description">
-            Discover trusted local professionals,
-            connect with the right service provider,
-            and manage your service requests in one simple place.
-          </p>
-
-        </div>
+      <div class="sg-role-list">
 
 
+        <!-- ===================================================
+             CUSTOMER
+             =================================================== -->
 
-        <!-- ROLE SELECTION -->
+        <button
+          type="button"
+          class="sg-role-card"
+          id="sg-customer-role"
+          aria-label="Continue as Customer"
+        >
 
-        <div class="sg-role-area">
+          <div class="sg-customer-icon">
 
-          <div class="sg-role-heading">
-            How will you use ServiceGo?
-          </div>
-
-
-          <div class="sg-role-grid">
-
-
-            <!-- CUSTOMER -->
-
-            <button
-              type="button"
-              class="sg-role-card"
-              id="sg-customer-role"
-              data-role="customer"
-              aria-label="Continue as Customer"
+            <svg
+              viewBox="0 0 64 64"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
 
-              <div class="sg-role-icon">
-                <span>⌂</span>
-              </div>
+              <circle
+                cx="32"
+                cy="19"
+                r="10"
+              />
 
+              <path
+                d="M13 52
+                   C14 41 21 35 32 35
+                   C43 35 50 41 51 52"
+              />
 
-              <div class="sg-role-content">
-
-                <span class="sg-role-title">
-                  Customer
-                </span>
-
-                <span class="sg-role-description">
-                  Find trusted professionals
-                  for the service you need.
-                </span>
-
-              </div>
-
-
-              <div class="sg-role-arrow">
-                →
-              </div>
-
-            </button>
-
-
-
-            <!-- SERVICE PROVIDER -->
-
-            <button
-              type="button"
-              class="sg-role-card"
-              id="sg-provider-role"
-              data-role="provider"
-              aria-label="Continue as Service Provider"
-            >
-
-              <div class="sg-role-icon">
-                ✓
-              </div>
-
-
-              <div class="sg-role-content">
-
-                <span class="sg-role-title">
-                  Service Provider
-                </span>
-
-                <span class="sg-role-description">
-                  Offer your services,
-                  receive requests and grow locally.
-                </span>
-
-              </div>
-
-
-              <div class="sg-role-arrow">
-                →
-              </div>
-
-            </button>
+            </svg>
 
           </div>
 
 
+          <div class="sg-role-copy">
 
-          <!-- TRUST MESSAGE -->
-
-          <div class="sg-trust-strip">
-
-            <div class="sg-trust-icon">
-              ✓
+            <div class="sg-role-title">
+              Customer
             </div>
 
-
-            <div class="sg-trust-text">
-
-              <strong>
-                Your privacy matters
-              </strong>
-
-              <span>
-                ServiceGo is designed to request
-                only the information needed for
-                your selected experience.
-              </span>
-
+            <div class="sg-role-description">
+              Find and book trusted local professionals
+              for your needs.
             </div>
 
           </div>
 
+
+          <div class="sg-role-arrow" aria-hidden="true">
+            →
+          </div>
+
+        </button>
+
+
+        <!-- ===================================================
+             SERVICE PROVIDER
+             =================================================== -->
+
+        <button
+          type="button"
+          class="sg-role-card"
+          id="sg-provider-role"
+          aria-label="Continue as Service Provider"
+        >
+
+          <div class="sg-provider-icon">
+
+            <svg
+              viewBox="0 0 64 64"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+
+              <!-- Bag body -->
+              <rect
+                x="13"
+                y="21"
+                width="38"
+                height="31"
+                rx="7"
+              />
+
+              <!-- Handle -->
+              <path
+                d="M23 21
+                   V16
+                   C23 12.5 25.5 10 29 10
+                   H35
+                   C38.5 10 41 12.5 41 16
+                   V21"
+              />
+
+              <!-- Service check -->
+              <path
+                d="M24 36
+                   L29 41
+                   L40 29"
+              />
+
+            </svg>
+
+          </div>
+
+
+          <div class="sg-role-copy">
+
+            <div class="sg-role-title">
+              Service Provider
+            </div>
+
+            <div class="sg-role-description">
+              Offer your services, receive requests,
+              and grow your local work.
+            </div>
+
+          </div>
+
+
+          <div class="sg-role-arrow" aria-hidden="true">
+            →
+          </div>
+
+        </button>
+
+
+      </div>
+
+
+      <!-- =====================================================
+           PRIVACY NOTE
+           ===================================================== -->
+
+      <div class="sg-privacy-note">
+
+        <div class="sg-privacy-icon">
+          ✓
         </div>
 
-      </main>
+        <div>
+
+          <div class="sg-privacy-title">
+            Your privacy matters
+          </div>
+
+          <div class="sg-privacy-text">
+            ServiceGo is designed to request only the
+            information needed for your selected experience.
+          </div>
+
+        </div>
+
+      </div>
 
 
+      <!-- =====================================================
+           EXISTING ACCOUNT
+           ===================================================== -->
 
-      <footer class="sg-welcome-footer">
+      <div class="sg-existing-account">
 
-        <span class="sg-footer-note">
-          A simple way to discover and manage local services.
+        <span>
+          Already using ServiceGo?
         </span>
 
+        <button
+          type="button"
+          class="sg-signin-button"
+          id="sg-signin-button"
+        >
+          Sign in
+        </button>
+
+      </div>
+
+
+      <!-- =====================================================
+           FOOTER
+           ===================================================== -->
+
+      <footer class="sg-welcome-footer">
+        ServiceGo · Local services made simpler
       </footer>
 
-    </section>
+
+    </div>
+
+  </section>
 
 
-
-    <!-- =======================================================
-         PART 1 END
-         
-         IMPORTANT:
-         PART 2 MUST BE PASTED DIRECTLY BELOW THIS LINE.
-         
-         Do not paste Part 2 inside the <head>.
-         Do not create another index.html.
-         Do not create another <html> document.
-         
-         The final Part of the application will close:
-         </body>
-         </html>
-    ======================================================== -->
+  <!-- =========================================================
+       PART 3 WILL BE PASTED DIRECTLY BELOW THIS LINE.
+       DO NOT ADD </body> OR </html> HERE.
+       ========================================================= -->
+    
