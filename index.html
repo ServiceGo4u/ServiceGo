@@ -9141,3 +9141,820 @@
 <!-- =========================================================
      END SERVICEGO — PART 15
      ========================================================= -->
+<!-- =========================================================
+     SERVICEGO — PART 16
+     PROVIDER REGISTRATION / BUSINESS VERIFICATION
+     ========================================================= -->
+
+<style>
+
+.sg-provider-register{
+  display:none;
+  min-height:100vh;
+  box-sizing:border-box;
+  padding:24px 18px 40px;
+  background:#f6faf8;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#122b3f;
+}
+
+.sg-provider-register-wrap{
+  max-width:680px;
+  margin:auto;
+}
+
+.sg-provider-register-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.sg-provider-register-back{
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:50%;
+  background:#eaf4f0;
+  color:#087452;
+  font-size:22px;
+  cursor:pointer;
+}
+
+.sg-provider-register-header h2{
+  margin:0;
+  font-size:25px;
+  font-weight:800;
+}
+
+.sg-provider-step{
+  display:flex;
+  gap:7px;
+  margin-bottom:22px;
+}
+
+.sg-provider-step span{
+  height:5px;
+  flex:1;
+  border-radius:10px;
+  background:#dfe9e5;
+}
+
+.sg-provider-step span.active{
+  background:#087452;
+}
+
+.sg-provider-intro-card{
+  background:linear-gradient(
+    145deg,
+    #0a7957,
+    #075d45
+  );
+  color:#fff;
+  border-radius:22px;
+  padding:21px;
+  margin-bottom:18px;
+  box-shadow:0 12px 30px rgba(8,116,82,.15);
+}
+
+.sg-provider-intro-card span{
+  display:block;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1px;
+  opacity:.82;
+  margin-bottom:8px;
+}
+
+.sg-provider-intro-card h3{
+  margin:0 0 7px;
+  font-size:21px;
+}
+
+.sg-provider-intro-card p{
+  margin:0;
+  font-size:13px;
+  line-height:1.6;
+  opacity:.91;
+}
+
+.sg-provider-form-card{
+  background:#fff;
+  border:1px solid #dfeae6;
+  border-radius:21px;
+  padding:20px;
+  box-shadow:0 9px 27px rgba(20,55,70,.045);
+}
+
+.sg-provider-field{
+  margin-bottom:16px;
+}
+
+.sg-provider-field label{
+  display:block;
+  margin-bottom:7px;
+  color:#415a66;
+  font-size:12px;
+  font-weight:800;
+}
+
+.sg-provider-field input,
+.sg-provider-field select{
+  width:100%;
+  height:48px;
+  box-sizing:border-box;
+  border:1px solid #d8e5e0;
+  border-radius:13px;
+  padding:0 13px;
+  outline:0;
+  background:#fbfdfc;
+  color:#17384c;
+  font-size:13px;
+}
+
+.sg-provider-field input:focus,
+.sg-provider-field select:focus{
+  border-color:#087452;
+  box-shadow:0 0 0 3px rgba(8,116,82,.08);
+}
+
+.sg-provider-field small{
+  display:block;
+  margin-top:6px;
+  color:#87949a;
+  font-size:10px;
+  line-height:1.5;
+}
+
+.sg-provider-two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+}
+
+.sg-document-choice{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:17px;
+}
+
+.sg-document-choice button{
+  min-height:48px;
+  border:1px solid #d8e5e0;
+  background:#fff;
+  border-radius:13px;
+  color:#536770;
+  font-size:12px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.sg-document-choice button.active{
+  border-color:#087452;
+  background:#edf7f3;
+  color:#087452;
+}
+
+.sg-upload-box{
+  border:1px dashed #b9d0c8;
+  border-radius:16px;
+  padding:18px;
+  text-align:center;
+  background:#f8fbfa;
+  margin-bottom:17px;
+}
+
+.sg-upload-box strong{
+  display:block;
+  color:#405a66;
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.sg-upload-box span{
+  display:block;
+  color:#89969b;
+  font-size:11px;
+  line-height:1.5;
+  margin-bottom:13px;
+}
+
+.sg-upload-box input{
+  width:100%;
+  font-size:11px;
+}
+
+.sg-provider-submit{
+  width:100%;
+  height:49px;
+  border:0;
+  border-radius:13px;
+  background:#087452;
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.sg-provider-submit:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.sg-provider-security-note{
+  margin-top:15px;
+  padding:13px;
+  border-radius:14px;
+  background:#edf7f3;
+  color:#5c716d;
+  font-size:11px;
+  line-height:1.55;
+}
+
+@media(max-width:520px){
+
+  .sg-provider-two{
+    grid-template-columns:1fr;
+  }
+
+}
+
+</style>
+
+
+<!-- =========================================================
+     PROVIDER REGISTRATION SCREEN
+     ========================================================= -->
+
+<section
+  id="sg-provider-register"
+  class="sg-provider-register">
+
+  <div class="sg-provider-register-wrap">
+
+
+    <header class="sg-provider-register-header">
+
+      <button
+        type="button"
+        class="sg-provider-register-back"
+        id="sg-provider-register-back">
+        ←
+      </button>
+
+      <h2>
+        Provider Registration
+      </h2>
+
+    </header>
+
+
+    <!-- REGISTRATION PROGRESS -->
+
+    <div class="sg-provider-step">
+
+      <span class="active"></span>
+      <span class="active"></span>
+      <span></span>
+
+    </div>
+
+
+    <!-- INTRO -->
+
+    <div class="sg-provider-intro-card">
+
+      <span>
+        PROVIDER VERIFICATION
+      </span>
+
+      <h3>
+        Tell us about your business
+      </h3>
+
+      <p>
+        These details help ServiceGo verify providers
+        before they can accept customer service requests.
+      </p>
+
+    </div>
+
+
+    <div class="sg-provider-form-card">
+
+
+      <!-- PERSONAL DETAILS -->
+
+      <div class="sg-provider-field">
+
+        <label for="sg-provider-name">
+          Full name
+        </label>
+
+        <input
+          id="sg-provider-name"
+          type="text"
+          placeholder="Enter your full name"
+          autocomplete="name">
+
+      </div>
+
+
+      <div class="sg-provider-two">
+
+        <div class="sg-provider-field">
+
+          <label for="sg-provider-mobile">
+            Mobile number
+          </label>
+
+          <input
+            id="sg-provider-mobile"
+            type="tel"
+            inputmode="numeric"
+            maxlength="10"
+            placeholder="10-digit mobile">
+
+        </div>
+
+
+        <div class="sg-provider-field">
+
+          <label for="sg-provider-email">
+            Email address
+          </label>
+
+          <input
+            id="sg-provider-email"
+            type="email"
+            placeholder="Your email"
+            autocomplete="email">
+
+        </div>
+
+      </div>
+
+
+      <!-- SERVICE -->
+
+      <div class="sg-provider-field">
+
+        <label for="sg-provider-service">
+          Main service
+        </label>
+
+        <select id="sg-provider-service">
+
+          <option value="">
+            Select your service
+          </option>
+
+          <option value="Electrician">
+            Electrician
+          </option>
+
+          <option value="Plumber">
+            Plumber
+          </option>
+
+          <option value="AC Repair">
+            AC Repair
+          </option>
+
+          <option value="Cleaning">
+            Cleaning
+          </option>
+
+          <option value="Carpenter">
+            Carpenter
+          </option>
+
+          <option value="Appliance Repair">
+            Appliance Repair
+          </option>
+
+          <option value="Mobile Repair">
+            Mobile Repair
+          </option>
+
+          <option value="Vehicle Service">
+            Vehicle Service
+          </option>
+
+          <option value="Other">
+            Other
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <!-- LOCATION -->
+
+      <div class="sg-provider-field">
+
+        <label for="sg-provider-area">
+          Service area
+        </label>
+
+        <input
+          id="sg-provider-area"
+          type="text"
+          placeholder="City / area where you provide service"
+          autocomplete="address-level2">
+
+        <small>
+          Your exact customer-facing location can be
+          controlled separately through the provider settings.
+        </small>
+
+      </div>
+
+
+      <!-- DOCUMENT TYPE -->
+
+      <div class="sg-provider-field">
+
+        <label>
+          Business verification document
+        </label>
+
+        <div class="sg-document-choice">
+
+          <button
+            type="button"
+            class="sg-document-button active"
+            data-document="PAN">
+            PAN Card
+          </button>
+
+          <button
+            type="button"
+            class="sg-document-button"
+            data-document="GST">
+            GST Number
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- DOCUMENT NUMBER -->
+
+      <div class="sg-provider-field">
+
+        <label for="sg-provider-document-number">
+          Document number
+        </label>
+
+        <input
+          id="sg-provider-document-number"
+          type="text"
+          placeholder="Enter PAN number">
+
+      </div>
+
+
+      <!-- PHOTO -->
+
+      <div class="sg-upload-box">
+
+        <strong>
+          Business / Identity Photo
+        </strong>
+
+        <span>
+          Upload a clear shop photo, business photo
+          or required identity photo for verification.
+        </span>
+
+        <input
+          id="sg-provider-photo"
+          type="file"
+          accept="image/*">
+
+      </div>
+
+
+      <button
+        type="button"
+        id="sg-provider-submit"
+        class="sg-provider-submit">
+
+        Submit for Verification
+
+      </button>
+
+
+      <div class="sg-provider-security-note">
+
+        Provider approval is required before a provider
+        can accept customer bookings. Verification data
+        should be stored securely by the application backend.
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<script>
+(function(){
+
+  "use strict";
+
+
+  var screen =
+    document.getElementById(
+      "sg-provider-register"
+    );
+
+  var back =
+    document.getElementById(
+      "sg-provider-register-back"
+    );
+
+  var submit =
+    document.getElementById(
+      "sg-provider-submit"
+    );
+
+  var documentNumber =
+    document.getElementById(
+      "sg-provider-document-number"
+    );
+
+
+  /* ========================================================
+     OPEN PROVIDER REGISTRATION
+     ======================================================== */
+
+  function openProviderRegistration(){
+
+    if(!screen){
+      return;
+    }
+
+
+    var welcome =
+      document.getElementById(
+        "welcome-screen"
+      );
+
+    var intro =
+      document.getElementById(
+        "provider-intro-screen"
+      );
+
+
+    if(welcome){
+      welcome.style.display =
+        "none";
+    }
+
+    if(intro){
+      intro.style.display =
+        "none";
+    }
+
+
+    screen.style.display =
+      "block";
+
+    screen.style.visibility =
+      "visible";
+
+    screen.style.opacity =
+      "1";
+
+  }
+
+
+  /* ========================================================
+     PROVIDER START BUTTON
+     ======================================================== */
+
+  var providerStart =
+    document.getElementById(
+      "provider-start"
+    );
+
+
+  if(providerStart){
+
+    providerStart.addEventListener(
+      "click",
+      openProviderRegistration
+    );
+
+  }
+
+
+  /* ========================================================
+     DOCUMENT TYPE
+     ======================================================== */
+
+  document
+    .querySelectorAll(
+      ".sg-document-button"
+    )
+    .forEach(function(button){
+
+      button.addEventListener(
+        "click",
+        function(){
+
+          document
+            .querySelectorAll(
+              ".sg-document-button"
+            )
+            .forEach(function(item){
+
+              item.classList.remove(
+                "active"
+              );
+
+            });
+
+
+          this.classList.add(
+            "active"
+          );
+
+
+          var type =
+            this.getAttribute(
+              "data-document"
+            );
+
+
+          if(documentNumber){
+
+            if(type === "GST"){
+
+              documentNumber.placeholder =
+                "Enter GST number";
+
+            }else{
+
+              documentNumber.placeholder =
+                "Enter PAN number";
+
+            }
+
+            documentNumber.value =
+              "";
+
+          }
+
+        }
+      );
+
+    });
+
+
+  /* ========================================================
+     SUBMIT PROVIDER VERIFICATION
+     ======================================================== */
+
+  if(submit){
+
+    submit.addEventListener(
+      "click",
+      function(){
+
+        var name =
+          document.getElementById(
+            "sg-provider-name"
+          );
+
+        var mobile =
+          document.getElementById(
+            "sg-provider-mobile"
+          );
+
+        var email =
+          document.getElementById(
+            "sg-provider-email"
+          );
+
+        var service =
+          document.getElementById(
+            "sg-provider-service"
+          );
+
+        var area =
+          document.getElementById(
+            "sg-provider-area"
+          );
+
+        var photo =
+          document.getElementById(
+            "sg-provider-photo"
+          );
+
+
+        if(
+          !name ||
+          !name.value.trim() ||
+          !mobile ||
+          mobile.value.trim().length !== 10 ||
+          !email ||
+          !email.value.trim() ||
+          !service ||
+          !service.value ||
+          !area ||
+          !area.value.trim() ||
+          !documentNumber ||
+          !documentNumber.value.trim() ||
+          !photo ||
+          !photo.files.length
+        ){
+
+          alert(
+            "Please complete all required provider verification details."
+          );
+
+          return;
+
+        }
+
+
+        document.dispatchEvent(
+          new CustomEvent(
+            "servicego:providerVerificationSubmitted",
+            {
+              detail:{
+                name:name.value.trim(),
+                mobile:mobile.value.trim(),
+                email:email.value.trim(),
+                service:service.value,
+                area:area.value.trim(),
+                documentNumber:
+                  documentNumber.value.trim()
+              }
+            }
+          )
+        );
+
+
+        alert(
+          "Your provider verification request has been submitted for review."
+        );
+
+      }
+    );
+
+  }
+
+
+  /* ========================================================
+     BACK
+     ======================================================== */
+
+  if(back){
+
+    back.addEventListener(
+      "click",
+      function(){
+
+        if(screen){
+
+          screen.style.display =
+            "none";
+
+        }
+
+
+        var intro =
+          document.getElementById(
+            "provider-intro-screen"
+          );
+
+
+        if(intro){
+
+          intro.style.display =
+            "block";
+
+        }
+
+      }
+    );
+
+  }
+
+})();
+</script>
+
+
+<!-- =========================================================
+     END SERVICEGO — PART 16
+     ========================================================= -->
+    
